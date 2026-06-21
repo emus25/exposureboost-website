@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ExposureBoost — The business card people don't forget</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<style>
+  :root{
+    --bg-top: #0a0518;
+    --bg-mid: #120a26;
+    --purple: #6d3fd1;
+    --purple-soft: #8b6fd9;
+    --purple-line: rgba(140, 110, 220, 0.35);
+    --gold: #f0b429;
+    --gold-deep: #d99a1f;
+    --white: #ffffff;
+    --grey: #9b96b3;
+    --grey-dim: #7a7591;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html, body{ height: 100%; height: 100dvh; }
+
+  body{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* ============================================================
+     BREAKPOINT SWITCH
+     Below 900px: show mobile design (the phone-style page)
+     900px and above: show desktop design (OneTap-style layout)
+     ============================================================ */
+
+  .mobile-view{ display: flex; }
+  .desktop-view{ display: none; }
+
+  @media (min-width: 900px){
+    .mobile-view{ display: none; }
+    .desktop-view{ display: block; }
+  }
+
+  /* ============================================================
+     MOBILE VIEW STYLES
+     ============================================================ */
+
+  .mobile-view {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #060310;
+    color: var(--white);
+    height: 100vh;
+    height: 100dvh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-view .page {
+    position: relative;
+    aspect-ratio: 853 / 1844;
+    height: 100vh;
+    height: 100dvh;
+    max-width: 440px;
+    container-type: size;
+    background: radial-gradient(120% 60% at 50% 0%, var(--bg-mid) 0%, var(--bg-top) 55%, #060310 100%);
+    overflow: hidden;
+  }
+
+  @media (max-aspect-ratio: 853/1844) {
+    .mobile-view .page {
+      height: auto;
+      width: 100vw;
+    }
+  }
+
+  .mobile-view header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8.3%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 0 5.6cqw;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .mobile-view .logo {
+    display:flex;
+    align-items:center;
+    gap:2.6cqw;
+  }
+
+  .mobile-view .logo-icon {
+    width:7.7cqw;
+    height:7.7cqw;
+    border: 1.5px solid var(--gold);
+    border-radius: 1.8cqw;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .mobile-view .logo-text {
+    font-size: 3.6cqw;
+    font-weight: 800;
+    letter-spacing: 0.13cqw;
+  }
+  .mobile-view .logo-text .boost { color: var(--gold); font-weight: 800; }
+
+  .mobile-view .order-btn {
+    background: var(--gold);
+    color: #1a1206;
+    font-weight: 700;
+    font-size: 3.3cqw;
+    border: none;
+    padding: 2.3cqw 4.1cqw;
+    border-radius: 1.8cqw;
+    white-space: nowrap;
+  }
+
+  .mobile-view .header-right {
+    display:flex;
+    align-items:center;
+    gap:4.1cqw;
+  }
+
+  .mobile-view .menu-icon {
+    display:flex;
+    flex-direction:column;
+    gap:1.3cqw;
+    cursor:pointer;
+  }
+  .mobile-view .menu-icon span {
+    width:6.15cqw;
+    height:2.5px;
+    background: var(--white);
+    display:block;
+    border-radius:2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .mobile-view .hero {
+    position: absolute;
+    top: 8.3%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 5.5cqh 5.6cqw 3.5cqw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .mobile-view .text-block {
+    flex-shrink: 0;
+  }
+
+  .mobile-view .eyebrow {
+    flex-shrink: 0;
+    color: #d9b8ec;
+    font-size: 3.3cqw;
+    letter-spacing: 0.3cqw;
+    font-weight: 400;
+  }
+
+  .mobile-view h1 {
+    flex-shrink: 0;
+    margin-top: 2.6cqw;
+    font-size: 8.7cqw;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.08cqw;
+  }
+  .mobile-view h1 .accent { color: var(--gold); }
+
+  .mobile-view .subhead {
+    flex-shrink: 0;
+    margin-top: 2.6cqw;
+    color: var(--grey);
+    font-size: 3.85cqw;
+    font-weight: 400;
+  }
+
+  /* ---------- PHONE / CARD VISUAL ---------- */
+  .mobile-view .visual {
+    position: relative;
+    flex-shrink: 0;
+    height: 45cqh;
+    margin-top: 7cqh;
+  }
+
+  .mobile-view .phone {
+    position:absolute;
+    top:0;
+    left:50%;
+    transform: translateX(-50%);
+    width: 66%;
+    aspect-ratio: 423 / 833;
+    max-height: 100%;
+    border: 2px solid #6e4e8c;
+    border-radius: 8.4cqw;
+    background: rgba(15, 8, 30, 0.4);
+  }
+
+  .mobile-view .phone::after {
+    content:"";
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 8.4cqw;
+    background: radial-gradient(70% 46% at 54% 60%, rgba(78, 40, 130, 0.7) 0%, rgba(60, 28, 105, 0.45) 30%, rgba(40, 18, 75, 0.28) 55%, rgba(20, 9, 45, 0.1) 80%, transparent 100%);
+  }
+
+  .mobile-view .phone::before {
+    content:"";
+    position:absolute;
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28%;
+    height: 5px;
+    border-radius: 4px;
+    background: rgba(160, 130, 220, 0.45);
+    z-index: 2;
+  }
+
+  .mobile-view .nfc-wrap {
+    position:absolute;
+    top: 26%;
+    left: 0;
+    right: 0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 3%;
+    z-index: 2;
+  }
+
+  .mobile-view .nfc-icon { width: 18%; height: auto; }
+
+  .mobile-view .ready-text {
+    color: #b287d4;
+    font-size: 4.1cqw;
+    font-weight: 500;
+  }
+
+  .mobile-view .biz-card {
+    position:absolute;
+    bottom: -3%;
+    left: 17%;
+    width: 86%;
+    aspect-ratio: 1.62 / 1;
+    border-radius: 12px;
+    background: linear-gradient(155deg, #f7c948 0%, #eeac1f 55%, #e0991a 100%);
+    transform: rotate(-4.3deg);
+    transform-origin: bottom left;
+    box-shadow: 0 20px 40px -8px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.4);
+    padding: 6% 7%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    z-index: 3;
+  }
+
+  .mobile-view .biz-card::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius: 12px;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.10) 0px,
+      rgba(255,255,255,0.10) 1px,
+      transparent 1px,
+      transparent 11%
+    );
+    pointer-events:none;
+  }
+
+  .mobile-view .chip {
+    width: 14%;
+    aspect-ratio: 34/24;
+    border-radius: 4px;
+    background: rgba(60, 40, 5, 0.55);
+  }
+
+  .mobile-view .card-bottom-row {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+  }
+
+  .mobile-view .card-name {
+    font-size: 4.36cqw;
+    font-weight: 800;
+    color: #241704;
+  }
+  .mobile-view .card-role {
+    font-size: 3.08cqw;
+    color: #4a350c;
+    margin-top: 2px;
+  }
+
+  .mobile-view .card-nfc { width: 11%; height: auto; opacity: 0.75; }
+
+  /* ---------- BUTTONS ---------- */
+  .mobile-view .footer-group {
+    flex-shrink: 0;
+    margin-top: 7cqh;
+  }
+
+  .mobile-view .cta-row {
+    display:flex;
+    gap: 3.1cqw;
+  }
+
+  .mobile-view .btn {
+    flex:1;
+    padding: 2.8cqw 0;
+    border-radius: 2.6cqw;
+    font-size: 3.85cqw;
+    font-weight: 700;
+    text-align:center;
+    border: none;
+    cursor:pointer;
+  }
+
+  .mobile-view .btn-primary {
+    background: var(--gold);
+    color: #1a1206;
+  }
+
+  .mobile-view .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid var(--purple-line);
+  }
+
+  .mobile-view .footnote {
+    flex-shrink: 0;
+    text-align:center;
+    color: var(--grey-dim);
+    font-size: 3.3cqw;
+    margin-top: 1.8cqw;
+  }
+  .mobile-view .footnote .dot { margin: 0 2cqw; }
+
+
+  /* ============================================================
+     DESKTOP VIEW STYLES
+     ============================================================ */
+
+  .desktop-view {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background:
+      radial-gradient(60% 50% at 82% 20%, rgba(109,63,209,0.20) 0%, transparent 60%),
+      linear-gradient(160deg, #0d0720 0%, #0a0518 55%, #060310 100%);
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* faint grid texture across hero */
+  .desktop-view .hero {
+    position: relative;
+    overflow: hidden;
+    background-image:
+      linear-gradient(rgba(140,110,220,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(140,110,220,0.05) 1px, transparent 1px);
+    background-size: 42px 42px;
+    background-position: center top;
+  }
+
+  /* ---------- NAV ---------- */
+  .desktop-view nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 5;
+    background: rgba(8, 4, 20, 0.6);
+    backdrop-filter: blur(6px);
+  }
+
+  .desktop-view .logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .desktop-view .logo-icon {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--gold);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .desktop-view .logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+  .desktop-view .logo-text .boost { color: var(--gold); }
+
+  .desktop-view .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .desktop-view .nav-links a {
+    color: var(--grey);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .desktop-view .nav-links a:hover { color: var(--white); }
+
+  .desktop-view .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .desktop-view .lang-switch {
+    color: var(--grey-dim);
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  .desktop-view .lang-switch b { color: var(--white); font-weight: 600; }
+
+  .desktop-view .nav-cta {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    color: #1a1206;
+    border: none;
+    font-weight: 700;
+    font-size: 14.5px;
+    padding: 12px 24px;
+    border-radius: 9px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* ---------- HERO CONTENT ---------- */
+  .desktop-view .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    align-items: center;
+    gap: 40px;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 96px 56px 110px;
+  }
+
+  .desktop-view .hero-copy { max-width: 560px; }
+
+  .desktop-view .eyebrow {
+    color: var(--purple-soft);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+
+  .desktop-view h1 {
+    font-size: 56px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+  .desktop-view h1 .accent {
+    color: var(--gold);
+    position: relative;
+  }
+  .desktop-view h1 .accent::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    bottom: 6px;
+    height: 10px;
+    background: rgba(240,180,41,0.18);
+    z-index: -1;
+    border-radius: 3px;
+  }
+
+  .desktop-view .subhead {
+    color: var(--grey);
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 38px;
+    max-width: 480px;
+  }
+
+  .desktop-view .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .desktop-view .btn-primary {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    color: #1a1206;
+    border: none;
+    font-weight: 700;
+    font-size: 15.5px;
+    padding: 16px 26px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 16px 32px -10px rgba(240,180,41,0.35);
+  }
+
+  .desktop-view .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid var(--purple-line);
+    font-weight: 600;
+    font-size: 15.5px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .desktop-view .play-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--purple-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .desktop-view .trust-row {
+    margin-top: 56px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .desktop-view .trust-row span {
+    color: var(--grey-dim);
+    font-size: 13.5px;
+  }
+  .desktop-view .trust-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--grey-dim);
+  }
+
+  /* ---------- PHONE MOCKUP ---------- */
+  .desktop-view .phone-wrap {
+    position: relative;
+    justify-self: center;
+    width: 320px;
+    height: 610px;
+  }
+
+  .desktop-view .phone {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--purple-line);
+    border-radius: 46px;
+    background: linear-gradient(180deg, #15102c 0%, #0d0822 100%);
+    box-shadow: 0 50px 100px -30px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.02);
+    overflow: hidden;
+  }
+
+  .desktop-view .phone::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 40%;
+    background: radial-gradient(70% 60% at 50% 0%, rgba(109,63,209,0.35) 0%, transparent 75%);
+  }
+
+  .desktop-view .notch {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 26px;
+    background: #050208;
+    border-radius: 14px;
+    z-index: 3;
+  }
+
+  .desktop-view .phone-screen {
+    position: absolute;
+    top: 58px;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    z-index: 2;
+  }
+
+  .desktop-view .screen-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .desktop-view .mini-logo {
+    width: 26px;
+    height: 26px;
+    border: 1.2px solid var(--gold);
+    border-radius: 6px;
+  }
+
+  .desktop-view .lang-pill {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--grey);
+    border: 1px solid var(--purple-line);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .desktop-view .profile-bar {
+    background: linear-gradient(135deg, var(--purple) 0%, #4f2aa8 100%);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .desktop-view .profile-bar .name {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .desktop-view .profile-bar .role {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+  }
+  .desktop-view .rating-pill {
+    background: rgba(255,255,255,0.18);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .desktop-view .tab-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .desktop-view .tab {
+    flex: 1;
+    text-align: center;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 9px 0;
+    border-radius: 9px;
+    color: var(--grey);
+    background: rgba(255,255,255,0.04);
+  }
+  .desktop-view .tab.active {
+    background: var(--purple);
+    color: var(--white);
+  }
+
+  .desktop-view .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 13px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .desktop-view .contact-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .desktop-view .icon-call { background: linear-gradient(135deg, #f0b429, #d99a1f); }
+  .desktop-view .icon-mail { background: linear-gradient(135deg, #6d3fd1, #4f2aa8); }
+
+  .desktop-view .contact-detail .label {
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .desktop-view .contact-detail .value {
+    height: 6px;
+    width: 90px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 3px;
+    margin-top: 7px;
+  }
+
+  .desktop-view .badge-saved {
+    position: absolute;
+    background: rgba(34,197,148,0.14);
+    border: 1px solid rgba(34,197,148,0.4);
+    color: #4ade9b;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 7px 12px;
+    border-radius: 20px;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .desktop-view .badge-saved::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4ade9b;
+  }
+
+  /* floating gold card bottom-right of phone */
+  .desktop-view .floating-card {
+    position: absolute;
+    width: 142px;
+    height: 90px;
+    right: -38px;
+    bottom: -28px;
+    border-radius: 12px;
+    background: linear-gradient(155deg, #f7c948 0%, #eeac1f 55%, #e0991a 100%);
+    transform: rotate(-8deg);
+    box-shadow: 0 24px 48px -12px rgba(0,0,0,0.55);
+    padding: 12px 13px;
+    z-index: 4;
+  }
+  .desktop-view .floating-card .fc-icon {
+    width: 22px;
+    height: 22px;
+    border: 1.2px solid rgba(36,23,4,0.5);
+    border-radius: 5px;
+  }
+  .desktop-view .floating-card .fc-text {
+    position: absolute;
+    bottom: 11px;
+    left: 13px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #241704;
+    letter-spacing: 0.3px;
+  }
+
+  /* responsive */
+  @media (max-width: 980px){
+    .desktop-view .hero-inner {
+      grid-template-columns: 1fr;
+      padding: 64px 28px 80px;
+      text-align: center;
+    }
+    .desktop-view .hero-copy { max-width: 100%; margin: 0 auto; }
+    .desktop-view .hero-ctas { justify-content: center; }
+    .desktop-view .trust-row { justify-content: center; }
+    .desktop-view .phone-wrap { margin: 56px auto 0; }
+    .desktop-view nav { padding: 18px 24px; }
+    .desktop-view .nav-links { display: none; }
+    .desktop-view h1 { font-size: 40px; }
+  }
+
+
+  /* ============================================================
+     REST-OF-SITE VARIABLES
+     (kept separate from the hero's :root above; --gold and the
+     purple brand color are intentionally reused so both halves
+     of the page share the same accent colors)
+     ============================================================ */
+  :root{
+    --dbg: #0a0518;
+    --dsf: #150c30;
+    --dpr: #6d3fd1;
+    --dlt: #c9a8ef;
+    --dbr: rgba(192, 144, 216, 0.14);
+    --lbg: #F8F5F2;
+    --lsf: #EFECEA;
+    --lbr: rgba(14, 6, 32, 0.08);
+    --lhd: #140A20;
+    --lbd: #5C5060;
+    --green: #25D366;
+    --fd: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  html{ scroll-behavior: smooth; }
+
+  /* ============================================================
+     REST-OF-SITE STYLES (below the hero)
+     Scoped under .site-sections so none of this can ever bleed
+     into or be affected by the hero's .mobile-view/.desktop-view rules.
+     ============================================================ */
+  .site-sections{ line-height: 1.7; color: #fff; font-size: 16px; }
+
+  .mw { max-width: 960px; margin: 0 auto; }
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+  .gbtn {
+    background: var(--gold);
+    color: var(--dbg);
+    font-family: var(--fd);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px 26px;
+    border-radius: 7px;
+    display: inline-block;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .gbtn:hover { opacity: 0.88; }
+
+  .gdk {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 7px;
+    border: 1px solid rgba(192, 144, 216, 0.28);
+    display: inline-block;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .gdk:hover { border-color: rgba(192, 144, 216, 0.5); }
+
+  .glt {
+    background: transparent;
+    color: var(--lhd);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 7px;
+    border: 1px solid rgba(14, 6, 32, 0.18);
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .gwht {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .pcard {
+    background: #fff;
+    border: 0.5px solid var(--lbr);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .pcard:hover { box-shadow: 0 4px 24px rgba(14, 6, 32, 0.08); }
+  .pcard-img { height: 166px; position: relative; overflow: hidden; }
+  .pcard-body { padding: 18px 20px 22px; }
+
+  .tcard {
+    background: #fff;
+    border: 0.5px solid var(--lbr);
+    border-radius: 12px;
+    padding: 20px 20px 18px;
+  }
+  .tcard-dk {
+    background: var(--dsf);
+    border: 0.5px solid var(--dbr);
+    border-radius: 12px;
+    padding: 20px 20px 18px;
+  }
+
+  .ey-dk { font-size: 12px; font-weight: 500; letter-spacing: .07em; color: var(--dlt); }
+  .ey-lt { font-size: 12px; font-weight: 500; letter-spacing: .07em; color: var(--dpr); }
+  .ey-vt { font-size: 12px; font-weight: 500; letter-spacing: .07em; color: rgba(255, 255, 255, 0.6); }
+
+  .footer-logo { display: block; height: 38px; width: auto; }
+
+  .stats-strip {
+    background: var(--dsf);
+    border-top: 0.5px solid var(--dbr);
+    border-bottom: 0.5px solid var(--dbr);
+  }
+  .stats-inner {
+    display: flex;
+    padding: 18px 56px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .stat { flex: 1; text-align: center; }
+  .stat + .stat { border-left: 0.5px solid var(--dbr); }
+  .stat-n { font-family: var(--fd); font-size: 24px; font-weight: 700; margin: 0; }
+  .stat-l { font-size: 12px; color: rgba(255, 255, 255, 0.35); margin: 2px 0 0; }
+
+  .av {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 12px; font-weight: 500;
+  }
+
+  .hiw-icon {
+    width: 44px; height: 44px; border-radius: 9px;
+    background: var(--dbg);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  footer {
+    background: #07041A;
+    border-top: 0.5px solid var(--dbr);
+    padding: 26px 56px;
+  }
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: rgba(255, 255, 255, 0.36); text-decoration: none; }
+  .footer-links a:hover { color: rgba(255, 255, 255, 0.65); }
+
+  @media (max-width: 720px) {
+    .g2 { grid-template-columns: 1fr; }
+    .g3 { grid-template-columns: 1fr; }
+    .stats-inner { padding: 16px 24px; }
+    footer { padding: 22px 24px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; text-align: left; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="mobile-view">
+<div class="page">
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M5 9C8.5 5.5 15.5 5.5 19 9" stroke="#6d3fd1" stroke-width="2" stroke-linecap="round"/>
+          <path d="M7.5 12.5C9.9 10 14.1 10 16.5 12.5" stroke="#f0b429" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="16.5" r="1.6" fill="#f0b429"/>
+        </svg>
+      </div>
+      <div class="logo-text">EXPOSURE<span class="boost">BOOST</span></div>
+    </div>
+    <div class="header-right">
+      <button class="order-btn">Order now</button>
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="text-block">
+      <div class="eyebrow">Trusted by BNI members across the UK</div>
+      <h1>The business card people <span class="accent">don't forget.</span></h1>
+      <p class="subhead">One Tap, All Your Details, Shared Instantly</p>
+    </div>
+
+    <div class="visual">
+      <div class="phone">
+        <div class="nfc-wrap">
+          <svg class="nfc-icon" viewBox="0 0 64 48" fill="none">
+            <path d="M16 22C24 13 40 13 48 22" stroke="#c9a8ef" stroke-width="3" stroke-linecap="round"/>
+            <path d="M21 28C26.5 22 37.5 22 43 28" stroke="#c9a8ef" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+            <path d="M26 34C29.5 30.5 34.5 30.5 38 34" stroke="#c9a8ef" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+          </svg>
+          <div class="ready-text">Ready to tap</div>
+        </div>
+
+        <div class="biz-card">
+          <div class="chip"></div>
+          <div class="card-bottom-row">
+            <div>
+              <div class="card-name">J. Matthews</div>
+              <div class="card-role">Managing Director</div>
+            </div>
+            <svg class="card-nfc" viewBox="0 0 26 20" fill="none">
+              <path d="M5 7.5C8.5 3.5 17.5 3.5 21 7.5" stroke="#241704" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7.5 11C10.3 8 15.7 8 18.5 11" stroke="#241704" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-group">
+      <div class="cta-row">
+        <button class="btn btn-primary">Get your card</button>
+        <button class="btn btn-secondary">How it works</button>
+      </div>
+      <p class="footnote">Free UK delivery <span class="dot">&bull;</span> Profile updates always free</p>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="desktop-view">
+<div class="hero">
+    <nav>
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M5 9C8.5 5.5 15.5 5.5 19 9" stroke="#6d3fd1" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7.5 12.5C9.9 10 14.1 10 16.5 12.5" stroke="#f0b429" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="16.5" r="1.6" fill="#f0b429"/>
+          </svg>
+        </div>
+        <div class="logo-text">EXPOSURE<span class="boost">BOOST</span></div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-switch"><b>EN</b> | FR</div>
+        <button class="nav-cta">Request a quote</button>
+      </div>
+    </nav>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">NFC Business Cards</div>
+        <h1>Your details, <br>in <span class="accent">one tap.</span></h1>
+        <p class="subhead">The NFC business card for independent professionals. Update your profile in real time — no app to download, nothing to print again.</p>
+
+        <div class="hero-ctas">
+          <button class="btn-primary">Get your card <span>&rarr;</span></button>
+          <button class="btn-secondary">
+            <span class="play-dot">&#9658;</span>
+            See the demo
+          </button>
+        </div>
+
+        <div class="trust-row">
+          <span>Trusted by BNI members across the UK</span>
+          <div class="trust-dot"></div>
+          <span>Free UK delivery</span>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="phone-screen">
+            <div class="screen-top-row">
+              <div class="mini-logo"></div>
+              <div class="lang-pill">EN</div>
+            </div>
+
+            <div class="profile-bar">
+              <div>
+                <div class="name">J. Matthews</div>
+                <div class="role">Managing Director</div>
+              </div>
+              <div class="rating-pill">&#9733; 4.8</div>
+            </div>
+
+            <div class="tab-row">
+              <div class="tab active">Contact</div>
+              <div class="tab">Socials</div>
+              <div class="tab">Links</div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon icon-call">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 4h3l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v3a2 2 0 01-2 2C10.5 20 4 13.5 4 6a2 2 0 012-2z" stroke="#1a1206" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="contact-detail">
+                <div class="label">Phone</div>
+                <div class="value"></div>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon icon-mail">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="contact-detail">
+                <div class="label">Email</div>
+                <div class="value"></div>
+              </div>
+            </div>
+
+            <div class="badge-saved">Saved instantly</div>
+          </div>
+        </div>
+
+        <div class="floating-card">
+          <div class="fc-icon"></div>
+          <div class="fc-text">EXPOSUREBOOST</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-sections">
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat"><p class="stat-n" style="color:var(--gold);">500+</p><p class="stat-l">cards delivered</p></div>
+    <div class="stat"><p class="stat-n" style="color:#fff;">Any phone</p><p class="stat-l">no app needed</p></div>
+    <div class="stat"><p class="stat-n" style="color:#fff;">48 hrs</p><p class="stat-l">dispatch time</p></div>
+    <div class="stat"><p class="stat-n" style="color:var(--gold);">Free</p><p class="stat-l">profile updates</p></div>
+  </div>
+</div>
+
+<!-- ===== LIGHT: PRODUCTS ===== -->
+<section id="products" style="background:var(--lbg);padding:72px clamp(20px,6vw,56px);">
+  <div class="mw">
+    <p class="ey-lt" style="margin-bottom:10px;">Choose your material</p>
+    <h2 class="fd" style="font-size:32px;font-weight:700;color:var(--lhd);margin-bottom:36px;line-height:1.15;">Three ways to make an impression.</h2>
+    <div class="g3">
+
+      <!-- METAL -->
+      <div class="pcard">
+        <div class="pcard-img" style="background:#B8901A;">
+          <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.09;" viewBox="0 0 300 166" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="15" x2="300" y2="15" stroke="#000" stroke-width="2"/>
+            <line x1="0" y1="30" x2="300" y2="30" stroke="#000" stroke-width="1"/>
+            <line x1="0" y1="45" x2="300" y2="45" stroke="#000" stroke-width="2"/>
+            <line x1="0" y1="60" x2="300" y2="60" stroke="#000" stroke-width="1"/>
+            <line x1="0" y1="75" x2="300" y2="75" stroke="#000" stroke-width="2"/>
+            <line x1="0" y1="90" x2="300" y2="90" stroke="#000" stroke-width="1"/>
+            <line x1="0" y1="105" x2="300" y2="105" stroke="#000" stroke-width="2"/>
+            <line x1="0" y1="120" x2="300" y2="120" stroke="#000" stroke-width="1"/>
+            <line x1="0" y1="135" x2="300" y2="135" stroke="#000" stroke-width="2"/>
+            <line x1="0" y1="150" x2="300" y2="150" stroke="#000" stroke-width="1"/>
+            <line x1="0" y1="164" x2="300" y2="164" stroke="#000" stroke-width="2"/>
+          </svg>
+          <span style="position:absolute;top:13px;right:13px;background:rgba(0,0,0,0.28);color:var(--gold);font-size:11px;font-weight:500;padding:3px 10px;border-radius:10px;">Bestseller</span>
+          <p class="fd" style="position:absolute;bottom:14px;left:16px;font-size:15px;font-weight:700;color:rgba(0,0,0,0.68);margin:0;">Metal card</p>
+          <svg style="position:absolute;bottom:14px;right:16px;" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+            <path d="M1 11 Q11 1 21 11" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M4 14 Q11 6 18 14" fill="none" stroke="rgba(0,0,0,0.32)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M7 17 Q11 11 15 17" fill="none" stroke="rgba(0,0,0,0.52)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pcard-body">
+          <p style="font-size:14px;color:var(--lbd);margin-bottom:16px;line-height:1.6;">The original showstopper. Laser-engraved with your branding, built to last, guaranteed to start conversations at every meeting.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <p style="font-size:12px;color:var(--lbd);">From</p>
+              <p class="fd" style="font-size:24px;font-weight:700;color:var(--dpr);margin:0;">£39</p>
+            </div>
+            <a href="#" class="gbtn" style="padding:9px 18px;font-size:13px;">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- WOOD -->
+      <div class="pcard">
+        <div class="pcard-img" style="background:#3B2008;position:relative;overflow:hidden;">
+          <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:.55;" viewBox="0 0 300 166" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 20 Q75 14 150 22 Q225 30 300 20" fill="none" stroke="#2C1505" stroke-width="1.5"/>
+            <path d="M0 46 Q90 39 180 48 Q260 55 300 46" fill="none" stroke="#2C1505" stroke-width="1"/>
+            <path d="M0 72 Q80 65 160 74 Q240 80 300 72" fill="none" stroke="#2C1505" stroke-width="1.5"/>
+            <path d="M0 98 Q85 91 165 100 Q245 106 300 98" fill="none" stroke="#2C1505" stroke-width="1"/>
+            <path d="M0 124 Q75 117 155 126 Q235 132 300 124" fill="none" stroke="#2C1505" stroke-width="1.5"/>
+            <path d="M0 150 Q90 143 170 152 Q250 158 300 150" fill="none" stroke="#2C1505" stroke-width="1"/>
+          </svg>
+          <p class="fd" style="position:absolute;bottom:14px;left:16px;font-size:15px;font-weight:700;color:rgba(212,168,67,0.78);margin:0;">Wood card</p>
+          <svg style="position:absolute;bottom:14px;right:16px;" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+            <path d="M1 11 Q11 1 21 11" fill="none" stroke="rgba(212,168,67,0.2)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M4 14 Q11 6 18 14" fill="none" stroke="rgba(212,168,67,0.38)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M7 17 Q11 11 15 17" fill="none" stroke="rgba(212,168,67,0.62)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pcard-body">
+          <p style="font-size:14px;color:var(--lbd);margin-bottom:16px;line-height:1.6;">Nature meets technology. Real bamboo or walnut, laser-engraved. For professionals who want to stand out in a different way.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <p style="font-size:12px;color:var(--lbd);">From</p>
+              <p class="fd" style="font-size:24px;font-weight:700;color:var(--dpr);margin:0;">£44</p>
+            </div>
+            <a href="#" class="gbtn" style="padding:9px 18px;font-size:13px;">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLASTIC -->
+      <div class="pcard">
+        <div class="pcard-img" style="background:var(--dbg);position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-24px;right:-24px;width:120px;height:120px;border-radius:50%;background:rgba(102,40,158,0.3);"></div>
+          <div style="position:absolute;bottom:-18px;left:-18px;width:84px;height:84px;border-radius:50%;background:rgba(102,40,158,0.2);"></div>
+          <p class="fd" style="position:absolute;bottom:14px;left:16px;font-size:15px;font-weight:700;color:var(--dlt);margin:0;">Plastic card</p>
+          <svg style="position:absolute;bottom:14px;right:16px;" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+            <path d="M1 11 Q11 1 21 11" fill="none" stroke="rgba(192,144,216,0.2)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M4 14 Q11 6 18 14" fill="none" stroke="rgba(192,144,216,0.4)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M7 17 Q11 11 15 17" fill="none" stroke="rgba(192,144,216,0.65)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="pcard-body">
+          <p style="font-size:14px;color:var(--lbd);margin-bottom:16px;line-height:1.6;">The smart starter. Full NFC functionality in a sleek, durable card. Perfect for teams or anyone new to NFC.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <p style="font-size:12px;color:var(--lbd);">From</p>
+              <p class="fd" style="font-size:24px;font-weight:700;color:var(--dpr);margin:0;">£24</p>
+            </div>
+            <a href="#" class="gbtn" style="padding:9px 18px;font-size:13px;">Order</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHT: HOW IT WORKS -->
+<section id="how-it-works" style="background:var(--lsf);padding:68px clamp(20px,6vw,56px);border-top:0.5px solid var(--lbr);">
+  <div class="mw">
+    <p class="ey-lt" style="margin-bottom:10px;">Simple by design</p>
+    <h2 class="fd" style="font-size:32px;font-weight:700;color:var(--lhd);margin-bottom:36px;line-height:1.15;">Up and running in minutes.</h2>
+    <div class="g3">
+      <div>
+        <div class="hiw-icon"><i class="ti ti-shopping-cart" style="font-size:20px;color:var(--gold);"></i></div>
+        <p class="fd" style="font-size:18px;font-weight:500;color:var(--lhd);margin-bottom:8px;">Order your card</p>
+        <p style="font-size:14px;color:var(--lbd);line-height:1.65;">Pick your material and upload your design. Usually dispatched within 48 hours.</p>
+      </div>
+      <div>
+        <div class="hiw-icon"><i class="ti ti-settings" style="font-size:20px;color:var(--gold);"></i></div>
+        <p class="fd" style="font-size:18px;font-weight:500;color:var(--lhd);margin-bottom:8px;">Set up your profile</p>
+        <p style="font-size:14px;color:var(--lbd);line-height:1.65;">Add your contact details, links, and socials. Change them any time — your card always stays current.</p>
+      </div>
+      <div>
+        <div class="hiw-icon"><i class="ti ti-wifi" style="font-size:20px;color:var(--gold);"></i></div>
+        <p class="fd" style="font-size:18px;font-weight:500;color:var(--lhd);margin-bottom:8px;">Tap and connect</p>
+        <p style="font-size:14px;color:var(--lbd);line-height:1.65;">Hold your card to any smartphone. No app, no QR code. Your full profile opens in one tap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHT: TESTIMONIALS -->
+<section id="testimonials" style="background:var(--lbg);padding:68px clamp(20px,6vw,56px);border-top:0.5px solid var(--lbr);">
+  <div class="mw">
+    <p class="ey-lt" style="margin-bottom:10px;">What people say</p>
+    <h2 class="fd" style="font-size:32px;font-weight:700;color:var(--lhd);margin-bottom:32px;line-height:1.15;">The card that sells itself.</h2>
+    <div class="g3">
+      <div class="tcard">
+        <p style="font-size:14px;color:var(--lhd);line-height:1.65;margin-bottom:16px;">"People at chapter ask about it every single week. Four members have ordered one since seeing mine."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="av" style="background:var(--dpr);color:var(--dlt);">DM</div>
+          <div>
+            <p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">David Mitchell</p>
+            <p style="font-size:12px;color:var(--lbd);margin:0;">Chartered accountant · BNI Altrincham</p>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <p style="font-size:14px;color:var(--lhd);line-height:1.65;margin-bottom:16px;">"My clients always mention the card when they book. It's become part of how people recognise my brand."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="av" style="background:var(--dpr);color:var(--dlt);">ET</div>
+          <div>
+            <p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Emma Thorpe</p>
+            <p style="font-size:12px;color:var(--lbd);margin:0;">Solicitor · BNI Manchester North</p>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <p style="font-size:14px;color:var(--lhd);line-height:1.65;margin-bottom:16px;">"Worth every penny. I stopped printing paper cards the week it arrived. Never looked back."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="av" style="background:var(--dpr);color:var(--dlt);">RB</div>
+          <div>
+            <p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Rob Barnes</p>
+            <p style="font-size:12px;color:var(--lbd);margin:0;">Mortgage broker · BNI Leeds West</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DARK RETURN: BNI ===== -->
+<section id="bni" style="background:var(--dbg);padding:72px clamp(20px,6vw,56px);border-top:0.5px solid var(--dbr);">
+  <div class="mw">
+    <div class="g2" style="gap:52px;">
+      <div>
+        <p class="ey-dk" style="margin-bottom:12px;">Built for BNI</p>
+        <h2 class="fd" style="font-size:30px;font-weight:700;line-height:1.18;margin-bottom:16px;">The unfair advantage at your chapter meeting.</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:14px;line-height:1.65;">Every BNI member introduces themselves 52 times a year. Your NFC card makes sure people remember you after they've met 30 others. One tap and your profile is on their phone.</p>
+        <p style="font-size:15px;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:28px;">Four members in one pilot chapter upgraded after a single weekly meeting. It spreads itself.</p>
+        <a href="#" class="gbtn">Order before your next meeting</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="tcard-dk">
+          <p style="font-size:14px;color:rgba(255,255,255,0.78);line-height:1.65;margin-bottom:14px;">"Honestly the best networking tool I've bought. I tap it on the table at every chapter and watch people's reactions."</p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="av" style="background:var(--dpr);color:var(--dlt);">JK</div>
+            <div>
+              <p style="font-size:13px;font-weight:500;color:#fff;margin:0;">James Kirkwood</p>
+              <p style="font-size:12px;color:rgba(255,255,255,0.35);margin:0;">Financial adviser · BNI Sheffield</p>
+            </div>
+          </div>
+        </div>
+        <div class="tcard-dk">
+          <p style="font-size:14px;color:rgba(255,255,255,0.78);line-height:1.65;margin-bottom:14px;">"I referred three members to ExposureBoost in my first month. It's genuinely the most useful thing I carry."</p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="av" style="background:var(--dpr);color:var(--dlt);">PL</div>
+            <div>
+              <p style="font-size:13px;font-weight:500;color:#fff;margin:0;">Priya Ladwa</p>
+              <p style="font-size:12px;color:rgba(255,255,255,0.35);margin:0;">Marketing consultant · BNI Birmingham</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER — vivid purple accent -->
+<section style="background:var(--dpr);padding:64px clamp(20px,6vw,56px);border-top:0.5px solid rgba(255,255,255,0.12);">
+  <div class="mw" style="text-align:center;">
+    <p class="ey-vt" style="margin-bottom:12px;">Ready to stand out?</p>
+    <h2 class="fd" style="font-size:34px;font-weight:700;margin-bottom:14px;">Make an impression that lasts.</h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.62);margin-bottom:30px;">Order today. Dispatched within 48 hours. Free UK delivery.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="gbtn">Get your card</a>
+      <a href="#" class="gwht">Message us on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="assets/images/logo-white.png" alt="ExposureBoost" class="footer-logo">
+      <p style="font-size:12px;color:rgba(255,255,255,0.22);margin-top:8px;">© 2026 ExposureBoost. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#">Metal</a>
+      <a href="#">Wood</a>
+      <a href="#">Plastic</a>
+      <a href="#">Stands</a>
+      <a href="#">Privacy policy</a>
+    </div>
+    <p style="font-size:12px;color:rgba(255,255,255,0.2);">exposureboost.com</p>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>
