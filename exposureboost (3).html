@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ExposureBoost — The business card people don't forget</title>
+<style>
+  :root{
+    --bg-top: #0a0518;
+    --bg-mid: #120a26;
+    --purple: #6d3fd1;
+    --purple-soft: #8b6fd9;
+    --purple-line: rgba(140, 110, 220, 0.35);
+    --gold: #f0b429;
+    --gold-deep: #d99a1f;
+    --white: #ffffff;
+    --grey: #9b96b3;
+    --grey-dim: #7a7591;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html, body{ height: 100%; height: 100dvh; }
+
+  body{
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* ============================================================
+     BREAKPOINT SWITCH
+     Below 900px: show mobile design (the phone-style page)
+     900px and above: show desktop design (OneTap-style layout)
+     ============================================================ */
+
+  .mobile-view{ display: flex; }
+  .desktop-view{ display: none; }
+
+  @media (min-width: 900px){
+    .mobile-view{ display: none; }
+    .desktop-view{ display: flex; }
+  }
+
+  /* ============================================================
+     MOBILE VIEW STYLES
+     ============================================================ */
+
+  .mobile-view {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #060310;
+    color: var(--white);
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .mobile-view .page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: radial-gradient(120% 60% at 50% 0%, var(--bg-mid) 0%, var(--bg-top) 55%, #060310 100%);
+    display: flex;
+    flex-direction: column;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-view header {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .mobile-view .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .mobile-view .logo-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--gold);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-view .logo-text {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .mobile-view .logo-text .boost { color: var(--gold); font-weight: 800; }
+
+  .mobile-view .order-btn {
+    background: var(--gold);
+    color: #1a1206;
+    font-weight: 700;
+    font-size: 13px;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .mobile-view .header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .mobile-view .menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+  }
+  .mobile-view .menu-icon span {
+    width: 20px;
+    height: 2px;
+    background: var(--white);
+    display: block;
+    border-radius: 2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .mobile-view .hero {
+    flex: 1 1 auto;
+    width: 100%;
+    text-align: center;
+    padding: 28px 20px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mobile-view .eyebrow {
+    color: #d9b8ec;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 400;
+  }
+
+  .mobile-view h1 {
+    margin-top: 12px;
+    font-size: clamp(28px, 9vw, 42px);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    max-width: 480px;
+  }
+  .mobile-view h1 .accent { color: var(--gold); }
+
+  .mobile-view .subhead {
+    margin-top: 12px;
+    color: var(--grey);
+    font-size: 15px;
+    font-weight: 400;
+    max-width: 380px;
+  }
+
+  /* ---------- PHONE / CARD VISUAL ---------- */
+  .mobile-view .visual {
+    position: relative;
+    width: 56%;
+    max-width: 260px;
+    min-width: 160px;
+    aspect-ratio: 423 / 833;
+    margin-top: 32px;
+  }
+
+  .mobile-view .phone {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #6e4e8c;
+    border-radius: 32px;
+    background: rgba(15, 8, 30, 0.4);
+    overflow: visible;
+  }
+
+  .mobile-view .phone::after {
+    content:"";
+    position:absolute;
+    inset: 0;
+    border-radius: 32px;
+    background: radial-gradient(70% 46% at 54% 60%, rgba(78, 40, 130, 0.7) 0%, rgba(60, 28, 105, 0.45) 30%, rgba(40, 18, 75, 0.28) 55%, rgba(20, 9, 45, 0.1) 80%, transparent 100%);
+  }
+
+  .mobile-view .phone::before {
+    content:"";
+    position:absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28%;
+    height: 5px;
+    border-radius: 4px;
+    background: rgba(160, 130, 220, 0.45);
+    z-index: 2;
+  }
+
+  .mobile-view .nfc-wrap {
+    position: absolute;
+    top: 26%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+
+  .mobile-view .nfc-icon { width: 18%; height: auto; }
+
+  .mobile-view .ready-text {
+    color: #b287d4;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .mobile-view .biz-card {
+    position: absolute;
+    bottom: -6%;
+    left: 18%;
+    width: 92%;
+    aspect-ratio: 1.62 / 1;
+    border-radius: 12px;
+    background: linear-gradient(155deg, #f7c948 0%, #eeac1f 55%, #e0991a 100%);
+    transform: rotate(-4.3deg);
+    transform-origin: bottom left;
+    box-shadow: 0 20px 40px -8px rgba(0,0,0,0.5), 0 8px 20px rgba(0,0,0,0.4);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 3;
+  }
+
+  .mobile-view .biz-card::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius: 12px;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.10) 0px,
+      rgba(255,255,255,0.10) 1px,
+      transparent 1px,
+      transparent 11%
+    );
+    pointer-events:none;
+  }
+
+  .mobile-view .chip {
+    width: 22px;
+    height: 16px;
+    border-radius: 4px;
+    background: rgba(60, 40, 5, 0.55);
+  }
+
+  .mobile-view .card-bottom-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .mobile-view .card-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #241704;
+  }
+  .mobile-view .card-role {
+    font-size: 10px;
+    color: #4a350c;
+    margin-top: 2px;
+  }
+
+  .mobile-view .card-nfc { width: 20px; height: auto; flex-shrink: 0; opacity: 0.75; }
+
+  /* ---------- BUTTONS ---------- */
+  .mobile-view .footer-group {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 40px;
+  }
+
+  .mobile-view .cta-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .mobile-view .btn {
+    flex: 1;
+    padding: 14px 0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mobile-view .btn-primary {
+    background: var(--gold);
+    color: #1a1206;
+  }
+
+  .mobile-view .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid var(--purple-line);
+  }
+
+  .mobile-view .footnote {
+    text-align: center;
+    color: var(--grey-dim);
+    font-size: 12px;
+    margin-top: 14px;
+  }
+  .mobile-view .footnote .dot { margin: 0 8px; }
+
+
+
+  /* ============================================================
+     DESKTOP VIEW STYLES
+     ============================================================ */
+
+  .desktop-view {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background:
+      radial-gradient(60% 50% at 82% 20%, rgba(109,63,209,0.20) 0%, transparent 60%),
+      linear-gradient(160deg, #0d0720 0%, #0a0518 55%, #060310 100%);
+    color: var(--white);
+    height: 100vh;
+    height: 100dvh;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* faint grid texture across hero */
+  .desktop-view .hero {
+    position: relative;
+    overflow: hidden;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background-image:
+      linear-gradient(rgba(140,110,220,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(140,110,220,0.05) 1px, transparent 1px);
+    background-size: 42px 42px;
+    background-position: center top;
+  }
+
+  /* ---------- NAV ---------- */
+  .desktop-view nav {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 5;
+    background: rgba(8, 4, 20, 0.6);
+    backdrop-filter: blur(6px);
+  }
+
+  .desktop-view .logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .desktop-view .logo-icon {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--gold);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .desktop-view .logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+  .desktop-view .logo-text .boost { color: var(--gold); }
+
+  .desktop-view .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .desktop-view .nav-links a {
+    color: var(--grey);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .desktop-view .nav-links a:hover { color: var(--white); }
+
+  .desktop-view .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .desktop-view .lang-switch {
+    color: var(--grey-dim);
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  .desktop-view .lang-switch b { color: var(--white); font-weight: 600; }
+
+  .desktop-view .nav-cta {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    color: #1a1206;
+    border: none;
+    font-weight: 700;
+    font-size: 14.5px;
+    padding: 12px 24px;
+    border-radius: 9px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* ---------- HERO CONTENT ---------- */
+  .desktop-view .hero-inner {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    align-items: center;
+    gap: 40px;
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  .desktop-view .hero-copy { max-width: 560px; }
+
+  .desktop-view .eyebrow {
+    color: var(--purple-soft);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+
+  .desktop-view h1 {
+    font-size: 56px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+  .desktop-view h1 .accent {
+    color: var(--gold);
+    position: relative;
+  }
+  .desktop-view h1 .accent::after {
+    content: "";
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    bottom: 6px;
+    height: 10px;
+    background: rgba(240,180,41,0.18);
+    z-index: -1;
+    border-radius: 3px;
+  }
+
+  .desktop-view .subhead {
+    color: var(--grey);
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 38px;
+    max-width: 480px;
+  }
+
+  .desktop-view .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .desktop-view .btn-primary {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    color: #1a1206;
+    border: none;
+    font-weight: 700;
+    font-size: 15.5px;
+    padding: 16px 26px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 16px 32px -10px rgba(240,180,41,0.35);
+  }
+
+  .desktop-view .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid var(--purple-line);
+    font-weight: 600;
+    font-size: 15.5px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .desktop-view .play-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--purple-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .desktop-view .trust-row {
+    margin-top: 56px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .desktop-view .trust-row span {
+    color: var(--grey-dim);
+    font-size: 13.5px;
+  }
+  .desktop-view .trust-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--grey-dim);
+  }
+
+  /* ---------- PHONE MOCKUP ---------- */
+  .desktop-view .phone-wrap {
+    position: relative;
+    justify-self: center;
+    width: clamp(220px, 34vh, 320px);
+    height: clamp(420px, 65vh, 610px);
+  }
+
+  .desktop-view .phone {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--purple-line);
+    border-radius: 46px;
+    background: linear-gradient(180deg, #15102c 0%, #0d0822 100%);
+    box-shadow: 0 50px 100px -30px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.02);
+    overflow: hidden;
+  }
+
+  .desktop-view .phone::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 40%;
+    background: radial-gradient(70% 60% at 50% 0%, rgba(109,63,209,0.35) 0%, transparent 75%);
+  }
+
+  .desktop-view .notch {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 26px;
+    background: #050208;
+    border-radius: 14px;
+    z-index: 3;
+  }
+
+  .desktop-view .phone-screen {
+    position: absolute;
+    top: 58px;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    z-index: 2;
+  }
+
+  .desktop-view .screen-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .desktop-view .mini-logo {
+    width: 26px;
+    height: 26px;
+    border: 1.2px solid var(--gold);
+    border-radius: 6px;
+  }
+
+  .desktop-view .lang-pill {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--grey);
+    border: 1px solid var(--purple-line);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .desktop-view .profile-bar {
+    background: linear-gradient(135deg, var(--purple) 0%, #4f2aa8 100%);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .desktop-view .profile-bar .name {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .desktop-view .profile-bar .role {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+  }
+  .desktop-view .rating-pill {
+    background: rgba(255,255,255,0.18);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .desktop-view .tab-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .desktop-view .tab {
+    flex: 1;
+    text-align: center;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 9px 0;
+    border-radius: 9px;
+    color: var(--grey);
+    background: rgba(255,255,255,0.04);
+  }
+  .desktop-view .tab.active {
+    background: var(--purple);
+    color: var(--white);
+  }
+
+  .desktop-view .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 13px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .desktop-view .contact-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .desktop-view .icon-call { background: linear-gradient(135deg, #f0b429, #d99a1f); }
+  .desktop-view .icon-mail { background: linear-gradient(135deg, #6d3fd1, #4f2aa8); }
+
+  .desktop-view .contact-detail .label {
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .desktop-view .contact-detail .value {
+    height: 6px;
+    width: 90px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 3px;
+    margin-top: 7px;
+  }
+
+  .desktop-view .badge-saved {
+    position: absolute;
+    background: rgba(34,197,148,0.14);
+    border: 1px solid rgba(34,197,148,0.4);
+    color: #4ade9b;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 7px 12px;
+    border-radius: 20px;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .desktop-view .badge-saved::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4ade9b;
+  }
+
+  /* floating gold card bottom-right of phone */
+  .desktop-view .floating-card {
+    position: absolute;
+    width: 142px;
+    height: 90px;
+    right: -38px;
+    bottom: -28px;
+    border-radius: 12px;
+    background: linear-gradient(155deg, #f7c948 0%, #eeac1f 55%, #e0991a 100%);
+    transform: rotate(-8deg);
+    box-shadow: 0 24px 48px -12px rgba(0,0,0,0.55);
+    padding: 12px 13px;
+    z-index: 4;
+  }
+  .desktop-view .floating-card .fc-icon {
+    width: 22px;
+    height: 22px;
+    border: 1.2px solid rgba(36,23,4,0.5);
+    border-radius: 5px;
+  }
+  .desktop-view .floating-card .fc-text {
+    position: absolute;
+    bottom: 11px;
+    left: 13px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #241704;
+    letter-spacing: 0.3px;
+  }
+
+  /* responsive */
+  @media (max-width: 980px){
+    .desktop-view .hero-inner {
+      grid-template-columns: 1fr;
+      padding: 64px 28px 80px;
+      text-align: center;
+    }
+    .desktop-view .hero-copy { max-width: 100%; margin: 0 auto; }
+    .desktop-view .hero-ctas { justify-content: center; }
+    .desktop-view .trust-row { justify-content: center; }
+    .desktop-view .phone-wrap { margin: 56px auto 0; }
+    .desktop-view nav { padding: 18px 24px; }
+    .desktop-view .nav-links { display: none; }
+    .desktop-view h1 { font-size: 40px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="mobile-view">
+<div class="page">
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M5 9C8.5 5.5 15.5 5.5 19 9" stroke="#6d3fd1" stroke-width="2" stroke-linecap="round"/>
+          <path d="M7.5 12.5C9.9 10 14.1 10 16.5 12.5" stroke="#f0b429" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="16.5" r="1.6" fill="#f0b429"/>
+        </svg>
+      </div>
+      <div class="logo-text">EXPOSURE<span class="boost">BOOST</span></div>
+    </div>
+    <div class="header-right">
+      <button class="order-btn">Order now</button>
+      <div class="menu-icon"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="text-block">
+      <div class="eyebrow">Trusted by BNI members across the UK</div>
+      <h1>The business card people <span class="accent">don't forget.</span></h1>
+      <p class="subhead">One Tap, All Your Details, Shared Instantly</p>
+    </div>
+
+    <div class="visual">
+      <div class="phone">
+        <div class="nfc-wrap">
+          <svg class="nfc-icon" viewBox="0 0 64 48" fill="none">
+            <path d="M16 22C24 13 40 13 48 22" stroke="#c9a8ef" stroke-width="3" stroke-linecap="round"/>
+            <path d="M21 28C26.5 22 37.5 22 43 28" stroke="#c9a8ef" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+            <path d="M26 34C29.5 30.5 34.5 30.5 38 34" stroke="#c9a8ef" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+          </svg>
+          <div class="ready-text">Ready to tap</div>
+        </div>
+
+        <div class="biz-card">
+          <div class="chip"></div>
+          <div class="card-bottom-row">
+            <div>
+              <div class="card-name">J. Matthews</div>
+              <div class="card-role">Managing Director</div>
+            </div>
+            <svg class="card-nfc" viewBox="0 0 26 20" fill="none">
+              <path d="M5 7.5C8.5 3.5 17.5 3.5 21 7.5" stroke="#241704" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7.5 11C10.3 8 15.7 8 18.5 11" stroke="#241704" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-group">
+      <div class="cta-row">
+        <button class="btn btn-primary">Get your card</button>
+        <button class="btn btn-secondary">How it works</button>
+      </div>
+      <p class="footnote">Free UK delivery <span class="dot">&bull;</span> Profile updates always free</p>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<div class="desktop-view">
+<div class="hero">
+    <nav>
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M5 9C8.5 5.5 15.5 5.5 19 9" stroke="#6d3fd1" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7.5 12.5C9.9 10 14.1 10 16.5 12.5" stroke="#f0b429" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="16.5" r="1.6" fill="#f0b429"/>
+          </svg>
+        </div>
+        <div class="logo-text">EXPOSURE<span class="boost">BOOST</span></div>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#">Solutions</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-switch"><b>EN</b> | FR</div>
+        <button class="nav-cta">Request a quote</button>
+      </div>
+    </nav>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">NFC Business Cards</div>
+        <h1>Your details, <br>in <span class="accent">one tap.</span></h1>
+        <p class="subhead">The NFC business card for independent professionals. Update your profile in real time — no app to download, nothing to print again.</p>
+
+        <div class="hero-ctas">
+          <button class="btn-primary">Get your card <span>&rarr;</span></button>
+          <button class="btn-secondary">
+            <span class="play-dot">&#9658;</span>
+            See the demo
+          </button>
+        </div>
+
+        <div class="trust-row">
+          <span>Trusted by BNI members across the UK</span>
+          <div class="trust-dot"></div>
+          <span>Free UK delivery</span>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="phone-screen">
+            <div class="screen-top-row">
+              <div class="mini-logo"></div>
+              <div class="lang-pill">EN</div>
+            </div>
+
+            <div class="profile-bar">
+              <div>
+                <div class="name">J. Matthews</div>
+                <div class="role">Managing Director</div>
+              </div>
+              <div class="rating-pill">&#9733; 4.8</div>
+            </div>
+
+            <div class="tab-row">
+              <div class="tab active">Contact</div>
+              <div class="tab">Socials</div>
+              <div class="tab">Links</div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon icon-call">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 4h3l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v3a2 2 0 01-2 2C10.5 20 4 13.5 4 6a2 2 0 012-2z" stroke="#1a1206" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="contact-detail">
+                <div class="label">Phone</div>
+                <div class="value"></div>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon icon-mail">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="contact-detail">
+                <div class="label">Email</div>
+                <div class="value"></div>
+              </div>
+            </div>
+
+            <div class="badge-saved">Saved instantly</div>
+          </div>
+        </div>
+
+        <div class="floating-card">
+          <div class="fc-icon"></div>
+          <div class="fc-text">EXPOSUREBOOST</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
