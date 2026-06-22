@@ -301,7 +301,205 @@
 
   .mobile-view .card-nfc { width: 20px; height: auto; flex-shrink: 0; opacity: 0.75; }
 
-  /* ---------- BUTTONS ---------- */
+  /* ---------- TAP-TO-REVEAL ANIMATION ---------- */
+
+  .mobile-view .biz-card {
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+  }
+
+  .mobile-view .biz-card.is-tapped {
+    transform: rotate(-1deg) scale(1.04) translateY(-2%);
+  }
+
+  .mobile-view .nfc-wrap {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .mobile-view .phone.is-active .nfc-wrap {
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+  }
+
+  /* ripple rings, spawned from the tap point */
+  .mobile-view .ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 199, 255, 0.9) 0%, rgba(160, 110, 230, 0.55) 38%, rgba(120, 70, 190, 0) 72%);
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .mobile-view .ripple.is-rippling {
+    animation: ripple-expand 0.9s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+
+  @keyframes ripple-expand {
+    0%   { opacity: 0.9; transform: scale(0); }
+    60%  { opacity: 0.5; }
+    100% { opacity: 0; transform: scale(22); }
+  }
+
+  /* gradient glow intensifies briefly on tap */
+  .mobile-view .phone::after {
+    transition: opacity 0.5s ease, filter 0.5s ease;
+  }
+  .mobile-view .phone.is-active::after {
+    opacity: 1.4;
+    filter: saturate(1.3) brightness(1.15);
+  }
+
+  /* ---------- PROFILE REVEAL PANEL ---------- */
+  .mobile-view .profile-reveal {
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    right: 8%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 7%;
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.2,.8,.3,1);
+    pointer-events: none;
+  }
+
+  .mobile-view .phone.is-active .profile-reveal {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-delay: 0.25s;
+  }
+
+  .mobile-view .rev-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 7% 8%;
+  }
+
+  .mobile-view .rev-header-text {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .mobile-view .rev-name {
+    font-size: clamp(10px, 2.4vh, 13px);
+    font-weight: 800;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-view .rev-role {
+    font-size: clamp(8px, 1.7vh, 10px);
+    color: var(--grey);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-view .rev-rating {
+    font-size: clamp(8px, 1.7vh, 10px);
+    font-weight: 700;
+    color: var(--gold);
+    background: rgba(240, 180, 41, 0.12);
+    border-radius: 20px;
+    padding: 3px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .mobile-view .rev-row {
+    display: flex;
+    align-items: center;
+    gap: 8%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 9px;
+    padding: 7% 9%;
+  }
+
+  .mobile-view .rev-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-view .rev-icon.gold { background: var(--gold); }
+  .mobile-view .rev-icon.purple { background: var(--purple); }
+
+  .mobile-view .rev-label {
+    font-size: clamp(8px, 1.9vh, 10px);
+    color: var(--grey);
+  }
+  .mobile-view .rev-value {
+    margin-top: 3px;
+    height: 6px;
+    width: 60%;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.22);
+  }
+
+  .mobile-view .rev-saved {
+    align-self: center;
+    margin-top: 2%;
+    font-size: clamp(8px, 1.8vh, 10px);
+    font-weight: 600;
+    color: #7be3a8;
+    background: rgba(50, 200, 120, 0.14);
+    border: 1px solid rgba(50, 200, 120, 0.3);
+    border-radius: 20px;
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .mobile-view .rev-saved::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #4ee08a;
+  }
+  .mobile-view .phone.is-active .rev-saved {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.55s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-view .biz-card,
+    .mobile-view .nfc-wrap,
+    .mobile-view .phone::after,
+    .mobile-view .profile-reveal,
+    .mobile-view .rev-saved {
+      transition: none !important;
+    }
+    .mobile-view .ripple.is-rippling { animation: none !important; }
+  }
+
+
   .mobile-view .footer-group {
     width: 100%;
     max-width: 400px;
@@ -829,7 +1027,9 @@
     </div>
 
     <div class="visual">
-      <div class="phone">
+      <div class="phone" id="phoneEl">
+        <div class="ripple" id="rippleEl"></div>
+
         <div class="nfc-wrap">
           <svg class="nfc-icon" viewBox="0 0 64 48" fill="none">
             <path d="M16 22C24 13 40 13 48 22" stroke="#c9a8ef" stroke-width="3" stroke-linecap="round"/>
@@ -839,7 +1039,39 @@
           <div class="ready-text">Ready to tap</div>
         </div>
 
-        <div class="biz-card">
+        <div class="profile-reveal">
+          <div class="rev-header">
+            <div class="rev-header-text">
+              <div class="rev-name">J. Matthews</div>
+              <div class="rev-role">Managing Director</div>
+            </div>
+            <div class="rev-rating">&#9733; 4.8</div>
+          </div>
+
+          <div class="rev-row">
+            <div class="rev-icon gold">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M6 4h3l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v3a2 2 0 01-2 2C10.5 20 4 13.5 4 6a2 2 0 012-2z" stroke="#1a1206" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="rev-label">Phone</div>
+              <div class="rev-value"></div>
+            </div>
+          </div>
+
+          <div class="rev-row">
+            <div class="rev-icon purple">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="rev-label">Email</div>
+              <div class="rev-value"></div>
+            </div>
+          </div>
+
+          <div class="rev-saved">Saved to contacts</div>
+        </div>
+
+        <div class="biz-card" id="cardEl">
           <div class="chip"></div>
           <div class="card-bottom-row">
             <div>
@@ -969,6 +1201,55 @@
     </div>
   </div>
 </div>
+
+<script>
+(function(){
+  var phone = document.getElementById('phoneEl');
+  var card = document.getElementById('cardEl');
+  var ripple = document.getElementById('rippleEl');
+  if (!phone || !card || !ripple) return;
+
+  var resetTimer = null;
+  var active = false;
+
+  function fireRipple(){
+    ripple.classList.remove('is-rippling');
+    // restart animation
+    void ripple.offsetWidth;
+    ripple.classList.add('is-rippling');
+  }
+
+  function activate(){
+    if (active) return;
+    active = true;
+    card.classList.add('is-tapped');
+    phone.classList.add('is-active');
+    fireRipple();
+
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(reset, 4200);
+  }
+
+  function reset(){
+    active = false;
+    card.classList.remove('is-tapped');
+    phone.classList.remove('is-active');
+  }
+
+  card.addEventListener('click', function(e){
+    e.preventDefault();
+    if (active){ reset(); }
+    else { activate(); }
+  });
+
+  // play the reveal automatically on page load
+  var autoTimer = setTimeout(function(){
+    if (!active) activate();
+  }, 700);
+
+  card.addEventListener('pointerdown', function(){ clearTimeout(autoTimer); }, { once: true });
+})();
+</script>
 
 </body>
 </html>
