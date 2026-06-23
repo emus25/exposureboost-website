@@ -306,15 +306,15 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
 <!-- STICKY BUY BAR (appears after scrolling past hero) -->
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-left">
-    <img src="assets/images/wood-oak-photo.webp" alt="Wooden card" id="stickyBarImg">
+    <img src="assets/images/wood-bamboo-photo.webp" alt="Wooden card" id="stickyBarImg">
     <div>
-      <p style="font-size:13px;font-weight:500;color:#fff;margin:0;" id="stickyBarName">Wooden NFC card — Oak</p>
+      <p style="font-size:13px;font-weight:500;color:#fff;margin:0;" id="stickyBarName">Wooden NFC card — Bamboo</p>
       <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;">Free UK delivery · 48hr dispatch</p>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
     <span class="sticky-bar-price">£35</span>
-    <a href="shop.html" class="gbtn" style="padding:10px 22px;font-size:14px;">Order now</a>
+    <a href="#" class="gbtn" style="padding:10px 22px;font-size:14px;" onclick="addToCart();return false;">Order now</a>
   </div>
 </div>
 
@@ -348,21 +348,17 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
       <!-- LEFT: Image viewer + finish selector + add to cart -->
       <div class="ph-viewer">
         <div class="ph-main">
-          <img src="assets/images/wood-oak-photo.webp" alt="Wooden NFC business card — Oak finish" id="mainCardImg">
+          <img src="assets/images/wood-bamboo-photo.webp" alt="Wooden NFC business card — Bamboo finish" id="mainCardImg">
         </div>
 
-        <p class="ph-colour-sel">Wood: <span id="selectedFinish">Oak</span></p>
+        <p class="ph-colour-sel">Wood: <span id="selectedFinish">Bamboo</span></p>
 
         <!-- Tap a card to change the wood & main image -->
         <div class="ph-thumbs" id="thumbGrid">
-          <div class="ph-thumb active" onclick="switchFinish(this, 'assets/images/wood-oak-photo.webp', 'Oak', '£35')"><img src="assets/images/wood-oak-photo.webp" alt="Oak"></div>
+          <div class="ph-thumb active" onclick="switchFinish(this, 'assets/images/wood-bamboo-photo.webp', 'Bamboo', '£35')"><img src="assets/images/wood-bamboo-photo.webp" alt="Bamboo"></div>
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-walnut-photo.webp', 'Walnut', '£35')"><img src="assets/images/wood-walnut-photo.webp" alt="Walnut"></div>
-          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-bamboo-photo.webp', 'Bamboo', '£35')"><img src="assets/images/wood-bamboo-photo.webp" alt="Bamboo"></div>
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-maple-photo.webp', 'Maple', '£35')"><img src="assets/images/wood-maple-photo.webp" alt="Maple"></div>
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-cherry-photo.webp', 'Cherry', '£39')"><img src="assets/images/wood-cherry-photo.webp" alt="Cherry"></div>
-          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-darkwalnut-photo.webp', 'Dark walnut', '£39')"><img src="assets/images/wood-darkwalnut-photo.webp" alt="Dark walnut"></div>
-          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-birch-photo.webp', 'Birch', '£35')"><img src="assets/images/wood-birch-photo.webp" alt="Birch"></div>
-          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-custom-photo.webp', 'Custom', 'From £49')"><img src="assets/images/wood-custom-photo.webp" alt="Custom"></div>
         </div>
 
         <!-- Compact buy row -->
@@ -370,7 +366,7 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
           <div class="ph-buy-price"><span id="displayPrice">£35</span><small>one-time · free UK delivery</small></div>
           <button class="ph-add" id="addBtn" onclick="addToCart()">Add to cart</button>
         </div>
-        <a class="ph-vb" id="viewBasket" href="shop.html">View basket &amp; checkout →</a>
+        <a class="ph-vb" id="viewBasket" href="#">View basket &amp; checkout →</a>
       </div>
 
       <!-- RIGHT: Product info -->
@@ -511,25 +507,25 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
       </div>
       <div>
         <p class="ey-lt" style="margin-bottom:10px;">Available woods</p>
-        <h2 class="sec-h sec-h-lt" style="font-size:24px;margin-bottom:22px;">7 woods. All fully custom.</h2>
+        <h2 class="sec-h sec-h-lt" style="font-size:24px;margin-bottom:22px;">4 woods. All fully custom.</h2>
         <div style="display:flex;flex-direction:column;gap:10px;">
           <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#C49A6C;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Oak — £35</p><p style="font-size:12px;color:var(--lbd);margin:0;">Warm golden grain. Classic and inviting. Best seller.</p></div>
+            <span style="width:12px;height:12px;border-radius:50%;background:#D8C39A;flex-shrink:0;"></span>
+            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Bamboo — £35</p><p style="font-size:12px;color:var(--lbd);margin:0;">Pale, eco-friendly and fast-growing. Best seller.</p></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
             <span style="width:12px;height:12px;border-radius:50%;background:#5A3B22;flex-shrink:0;"></span>
             <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Walnut — £35</p><p style="font-size:12px;color:var(--lbd);margin:0;">Rich, deep brown. Premium and timeless.</p></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#D8C39A;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Bamboo — £35</p><p style="font-size:12px;color:var(--lbd);margin:0;">Pale, eco-friendly and fast-growing.</p></div>
+            <span style="width:12px;height:12px;border-radius:50%;background:#E0CDA0;flex-shrink:0;"></span>
+            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Maple — £35</p><p style="font-size:12px;color:var(--lbd);margin:0;">Light, smooth and clean. Engraving pops.</p></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
             <span style="width:12px;height:12px;border-radius:50%;background:#7A4A2B;flex-shrink:0;"></span>
             <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Cherry — £39</p><p style="font-size:12px;color:var(--lbd);margin:0;">Warm reddish hue that deepens with age.</p></div>
           </div>
-          <a href="#finish-gallery" style="font-size:13px;color:var(--dpr);font-weight:500;text-decoration:none;padding:12px 0;display:block;">See all 7 woods ↓</a>
+          <a href="#finish-gallery" style="font-size:13px;color:var(--dpr);font-weight:500;text-decoration:none;padding:12px 0;display:block;">See all 4 woods ↓</a>
         </div>
       </div>
     </div>
@@ -542,12 +538,12 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
     <p class="ey-lt">All woods</p>
     <h2 class="sec-h sec-h-lt">Every one fully customised to your brand.</h2>
     <div class="fg-grid">
-      <div class="fg-card" onclick="window.scrollTo({top:0,behavior:'smooth'});switchFinish(document.querySelector('.ph-thumb'), 'assets/images/wood-oak-photo.webp', 'Oak', '£35')">
-        <div class="fg-img"><img src="assets/images/wood-oak-photo.webp" alt="Oak wooden NFC card"></div>
+      <div class="fg-card" onclick="window.scrollTo({top:0,behavior:'smooth'});switchFinish(document.querySelector('.ph-thumb'), 'assets/images/wood-bamboo-photo.webp', 'Bamboo', '£35')">
+        <div class="fg-img"><img src="assets/images/wood-bamboo-photo.webp" alt="Bamboo wooden NFC card"></div>
         <div class="fg-info">
-          <p class="fg-name">Oak</p>
-          <p class="fg-desc">The bestseller. Warm golden grain, classic feel.</p>
-          <a href="shop.html?finish=oak" class="fg-link" onclick="event.stopPropagation();">Order — £35 →</a>
+          <p class="fg-name">Bamboo</p>
+          <p class="fg-desc">The bestseller. Pale, eco-friendly and warm.</p>
+          <a href="#" class="fg-link" onclick="event.stopPropagation();addToCart();return false;">Order — £35 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -555,15 +551,7 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Walnut</p>
           <p class="fg-desc">Rich, deep brown. Premium and timeless.</p>
-          <a href="shop.html?finish=walnut" class="fg-link">Order — £35 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/wood-bamboo-photo.webp" alt="Bamboo wooden NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Bamboo</p>
-          <p class="fg-desc">Pale and eco-friendly. The greenest choice.</p>
-          <a href="shop.html?finish=bamboo" class="fg-link">Order — £35 →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £35 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -571,7 +559,7 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Maple</p>
           <p class="fg-desc">Light, smooth and clean. Engraving pops.</p>
-          <a href="shop.html?finish=maple" class="fg-link">Order — £35 →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £35 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -579,31 +567,7 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Cherry</p>
           <p class="fg-desc">Warm reddish hue that deepens with age.</p>
-          <a href="shop.html?finish=cherry" class="fg-link">Order — £39 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/wood-darkwalnut-photo.webp" alt="Dark walnut wooden NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Dark walnut</p>
-          <p class="fg-desc">Deep espresso tone. Bold and luxurious.</p>
-          <a href="shop.html?finish=darkwalnut" class="fg-link">Order — £39 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/wood-birch-photo.webp" alt="Birch wooden NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Birch</p>
-          <p class="fg-desc">Pale and modern with a subtle grain.</p>
-          <a href="shop.html?finish=birch" class="fg-link">Order — £35 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/wood-custom-photo.webp" alt="Fully custom wooden NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Fully custom</p>
-          <p class="fg-desc">Any wood, any design. Speak to us first.</p>
-          <a href="https://wa.me/447700000000" class="fg-link">Enquire →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £39 →</a>
         </div>
       </div>
     </div>
@@ -722,7 +686,7 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
     <h2 class="fd" style="font-size:34px;font-weight:700;margin-bottom:12px;">Order today. In their hand within the week.</h2>
     <p style="font-size:15px;color:rgba(255,255,255,0.7);margin-bottom:30px;">From £35 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a href="shop.html?product=wooden" class="gbtn gbtn-lg" style="background:#fff;color:var(--dpr);">Order your wooden card</a>
+      <a href="#" class="gbtn gbtn-lg" style="background:#fff;color:var(--dpr);" onclick="addToCart();return false;">Order your wooden card</a>
       <a href="https://wa.me/447700000000" style="background:transparent;border:1.5px solid rgba(255,255,255,0.4);color:#fff;font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
         <i class="ti ti-brand-whatsapp" style="font-size:17px;color:var(--green);"></i>Message us first
       </a>
@@ -767,7 +731,7 @@ footer { background: #150E07; border-top: 0.5px solid var(--dbr); padding: 26px 
 <script>
 // ════════════════════════════════════════════════════════════
 //  SHARED CART  — same localStorage key ("eb_cart"), catalog and
-//  checkout as shop.html, so the basket follows the visitor across
+//  checkout as the homepage, so the basket follows the visitor across
 //  every page (home, product pages, shop) and into checkout.
 // ════════════════════════════════════════════════════════════
 const ORDER_FORM_URL = "https://exposureboost-checkout.exposureboost.workers.dev";

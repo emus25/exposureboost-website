@@ -313,7 +313,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
     <span class="sticky-bar-price">£25</span>
-    <a href="shop.html" class="gbtn" style="padding:10px 22px;font-size:14px;">Order now</a>
+    <a href="#" class="gbtn" style="padding:10px 22px;font-size:14px;" onclick="addToCart();return false;">Order now</a>
   </div>
 </div>
 
@@ -361,7 +361,6 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/plastic-green-photo.webp', 'Green', '£25')"><img src="assets/images/plastic-green-photo.webp" alt="Green"></div>
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/plastic-pink-photo.webp', 'Pink', '£25')"><img src="assets/images/plastic-pink-photo.webp" alt="Pink"></div>
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/plastic-yellow-photo.webp', 'Yellow', '£25')"><img src="assets/images/plastic-yellow-photo.webp" alt="Yellow"></div>
-          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/plastic-custom-photo.webp', 'Custom', 'From £34')"><img src="assets/images/plastic-custom-photo.webp" alt="Custom"></div>
         </div>
 
         <!-- Compact buy row -->
@@ -369,7 +368,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           <div class="ph-buy-price"><span id="displayPrice">£25</span><small>one-time · free UK delivery</small></div>
           <button class="ph-add" id="addBtn" onclick="addToCart()">Add to cart</button>
         </div>
-        <a class="ph-vb" id="viewBasket" href="shop.html">View basket &amp; checkout →</a>
+        <a class="ph-vb" id="viewBasket" href="#">View basket &amp; checkout →</a>
       </div>
 
       <!-- RIGHT: Product info -->
@@ -510,7 +509,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
       </div>
       <div>
         <p class="ey-lt" style="margin-bottom:10px;">Available colours</p>
-        <h2 class="sec-h sec-h-lt" style="font-size:24px;margin-bottom:22px;">8 colours. All fully custom.</h2>
+        <h2 class="sec-h sec-h-lt" style="font-size:24px;margin-bottom:22px;">7 colours. All fully custom.</h2>
         <div style="display:flex;flex-direction:column;gap:10px;">
           <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
             <span style="width:12px;height:12px;border-radius:50%;background:#FFFFFF;border:1px solid var(--lbr);flex-shrink:0;"></span>
@@ -528,7 +527,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
             <span style="width:12px;height:12px;border-radius:50%;background:#E03B3B;flex-shrink:0;"></span>
             <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Red — £25</p><p style="font-size:12px;color:var(--lbd);margin:0;">High energy. Impossible to ignore.</p></div>
           </div>
-          <a href="#finish-gallery" style="font-size:13px;color:var(--dpr);font-weight:500;text-decoration:none;padding:12px 0;display:block;">See all 8 colours ↓</a>
+          <a href="#finish-gallery" style="font-size:13px;color:var(--dpr);font-weight:500;text-decoration:none;padding:12px 0;display:block;">See all 7 colours ↓</a>
         </div>
       </div>
     </div>
@@ -546,7 +545,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">White</p>
           <p class="fg-desc">The bestseller. Clean canvas, vivid colour.</p>
-          <a href="shop.html?finish=white" class="fg-link" onclick="event.stopPropagation();">Order — £25 →</a>
+          <a href="#" class="fg-link" onclick="event.stopPropagation();addToCart();return false;">Order — £25 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -554,7 +553,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Matte black</p>
           <p class="fg-desc">Sleek and understated, with bright print.</p>
-          <a href="shop.html?finish=black" class="fg-link">Order — £25 →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £25 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -562,7 +561,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Blue</p>
           <p class="fg-desc">Bold, confident, professional.</p>
-          <a href="shop.html?finish=blue" class="fg-link">Order — £25 →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £25 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -570,7 +569,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Red</p>
           <p class="fg-desc">High energy. Impossible to ignore.</p>
-          <a href="shop.html?finish=red" class="fg-link">Order — £25 →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £25 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -578,7 +577,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Green</p>
           <p class="fg-desc">Fresh and distinctive. Stands out in a stack.</p>
-          <a href="shop.html?finish=green" class="fg-link">Order — £25 →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £25 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -586,7 +585,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Pink</p>
           <p class="fg-desc">Playful and memorable. A beauty-industry favourite.</p>
-          <a href="shop.html?finish=pink" class="fg-link">Order — £25 →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £25 →</a>
         </div>
       </div>
       <div class="fg-card">
@@ -594,15 +593,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="fg-info">
           <p class="fg-name">Yellow</p>
           <p class="fg-desc">Bright and cheerful. Hard to lose in a bag.</p>
-          <a href="shop.html?finish=yellow" class="fg-link">Order — £25 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/plastic-custom-photo.webp" alt="Fully custom plastic NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Fully custom</p>
-          <p class="fg-desc">Any colour, any design. Speak to us first.</p>
-          <a href="https://wa.me/447700000000" class="fg-link">Enquire →</a>
+          <a href="#" class="fg-link" onclick="addToCart();return false;">Order — £25 →</a>
         </div>
       </div>
     </div>
@@ -721,7 +712,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
     <h2 class="fd" style="font-size:34px;font-weight:700;margin-bottom:12px;">Order today. In their hand within the week.</h2>
     <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £25 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a href="shop.html?product=plastic" class="gbtn gbtn-lg">Order your plastic card</a>
+      <a href="#" class="gbtn gbtn-lg" onclick="addToCart();return false;">Order your plastic card</a>
       <a href="https://wa.me/447700000000" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
         <i class="ti ti-brand-whatsapp" style="font-size:17px;color:var(--green);"></i>Message us first
       </a>
@@ -766,7 +757,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <script>
 // ════════════════════════════════════════════════════════════
 //  SHARED CART  — same localStorage key ("eb_cart"), catalog and
-//  checkout as shop.html, so the basket follows the visitor across
+//  checkout as the homepage, so the basket follows the visitor across
 //  every page (home, product pages, shop) and into checkout.
 // ════════════════════════════════════════════════════════════
 const ORDER_FORM_URL = "https://exposureboost-checkout.exposureboost.workers.dev";
