@@ -57,9 +57,8 @@
   .mobile-view .page {
     position: relative;
     width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
     background: radial-gradient(120% 60% at 50% 0%, var(--bg-mid) 0%, var(--bg-top) 55%, #060310 100%);
     display: flex;
     flex-direction: column;
@@ -277,8 +276,8 @@
       radial-gradient(60% 50% at 82% 20%, rgba(109,63,209,0.20) 0%, transparent 60%),
       linear-gradient(160deg, #0d0720 0%, #0a0518 55%, #060310 100%);
     color: var(--white);
-    height: 100vh; height: 100dvh;
-    flex-direction: column; overflow: hidden;
+    min-height: 100vh; min-height: 100dvh;
+    flex-direction: column;
   }
   .desktop-view .hero {
     position: relative; overflow: hidden; flex: 1 1 auto; min-height: 0;
@@ -407,16 +406,10 @@
   .site .pcat .pn{ font-family:var(--font-display); font-weight:600; font-size:15px; color:var(--lp-heading); }
   .site .shop-all{ text-align:center; margin-top:22px; }
 
-  /* circular (infinite auto-looping) testimonials carousel */
-  .site .carousel{ position:relative; overflow:hidden; padding:4px 0 14px; margin:0;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);
-    mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%); }
-  .site .t-track{ display:flex; gap:14px; width:max-content; animation:eb-marquee 40s linear infinite; }
-  .site .carousel:hover .t-track,
-  .site .carousel.paused .t-track{ animation-play-state:paused; }
-  @keyframes eb-marquee{ from{ transform:translateX(0); } to{ transform:translateX(calc(-50% - 7px)); } }
-  @media (prefers-reduced-motion: reduce){ .site .t-track{ animation:none; } .site .carousel{ overflow-x:auto; } }
-  .site .tvid{ position:relative; flex:0 0 auto; width:clamp(180px,62vw,230px); aspect-ratio:9/16; border-radius:18px; overflow:hidden; cursor:pointer; background:linear-gradient(160deg,#2a1a52,#0E0620); border:1px solid var(--lp-border); box-shadow:0 14px 30px -16px rgba(20,10,32,.45); -webkit-tap-highlight-color:transparent; }
+  /* circular swipe carousel: swipe as normal — wraps seamlessly end <-> start */
+  .site .carousel{ display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:4px 18px 14px; margin:0 -18px; scrollbar-width:none; }
+  .site .carousel::-webkit-scrollbar{ display:none; }
+  .site .tvid{ position:relative; flex:0 0 auto; width:clamp(180px,62vw,230px); scroll-snap-align:center; aspect-ratio:9/16; border-radius:18px; overflow:hidden; cursor:pointer; background:linear-gradient(160deg,#2a1a52,#0E0620); border:1px solid var(--lp-border); box-shadow:0 14px 30px -16px rgba(20,10,32,.45); -webkit-tap-highlight-color:transparent; }
   .site .tvid .play{ position:absolute; top:44%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; }
   .site .tvid .play::after{ content:""; margin-left:4px; border-left:16px solid #231702; border-top:10px solid transparent; border-bottom:10px solid transparent; }
   .site .tvid .meta{ position:absolute; left:12px; right:12px; bottom:12px; color:#fff; z-index:2; text-shadow:0 1px 6px rgba(0,0,0,.6); }
@@ -544,7 +537,6 @@
       <div class="logo-text">EXPOSURE<span class="boost">BOOST</span></div>
     </div>
     <div class="header-right">
-      <button class="order-btn">Order now</button>
       <button class="eb-cart-btn icon-only eb-cart-open" aria-label="Open cart">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.5 12h11L21 7H6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="#fff"/><circle cx="18" cy="20" r="1.4" fill="#fff"/></svg>
         <span class="eb-cart-count">0</span>
@@ -831,21 +823,18 @@
         <h2>Loved by <span class="accent">professionals</span></h2>
       </div>
     </div>
-    <!-- Circular auto-looping portrait carousel. The set is duplicated for a
-         seamless infinite loop. Replace each data-yt with a real (vertical) video ID. -->
-    <div class="carousel" id="tCarousel">
-      <div class="t-track">
+    <div class="wrap">
+      <!-- Circular swipe carousel. Swipe as normal; JS clones a set on each side so
+           it wraps seamlessly from the end back to the start (and vice-versa).
+           Replace each data-yt with a real (vertical) video ID. -->
+      <div class="carousel" id="tCarousel">
         <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">James M.</div><div class="ro">Managing Director</div></div></div>
         <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Sarah P.</div><div class="ro">Estate Agent</div></div></div>
         <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Daniel O.</div><div class="ro">Recruiter</div></div></div>
         <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Amelia R.</div><div class="ro">Consultant</div></div></div>
-        <!-- duplicate set (aria-hidden) for the seamless circular loop -->
-        <div class="tvid" data-yt="aqz-KE-bpKQ" aria-hidden="true"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">James M.</div><div class="ro">Managing Director</div></div></div>
-        <div class="tvid" data-yt="aqz-KE-bpKQ" aria-hidden="true"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Sarah P.</div><div class="ro">Estate Agent</div></div></div>
-        <div class="tvid" data-yt="aqz-KE-bpKQ" aria-hidden="true"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Daniel O.</div><div class="ro">Recruiter</div></div></div>
-        <div class="tvid" data-yt="aqz-KE-bpKQ" aria-hidden="true"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Amelia R.</div><div class="ro">Consultant</div></div></div>
       </div>
     </div>
+    <div class="wrap"><div class="swipe-hint">← swipe · loops around →</div></div>
   </section>
 
   <!-- 5. FAQ -->
@@ -1052,7 +1041,7 @@
     });
   }
   // "Get your card" / "Order now" / "Request a quote" -> choose-your-style
-  scrollToId('.mobile-view .order-btn, .mobile-view .btn-primary, .desktop-view .nav-cta, .desktop-view .btn-primary', 'products');
+  scrollToId('.mobile-view .btn-primary, .desktop-view .nav-cta, .desktop-view .btn-primary', 'products');
   // secondary "How it works" -> how-it-works section
   scrollToId('.mobile-view .btn-secondary, .desktop-view .btn-secondary', 'how');
 })();
@@ -1071,11 +1060,75 @@
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
 })();
 
-/* ---- pause the circular testimonials carousel once a video is opened ---- */
+/* ---- circular testimonials carousel: swipe normally, wraps end <-> start ----
+   Clones a full set on each side. We DON'T touch the scroll mid-swipe (that's
+   what made it glitchy); instead, once the swipe settles we shift back to the
+   middle copy by a whole set-width. Every copy is identical, so that shift is
+   invisible — giving a seamless loop in both directions. */
 (function(){
   var car = document.getElementById('tCarousel');
   if(!car) return;
-  car.addEventListener('click', function(){ car.classList.add('paused'); });
+  var reals = Array.prototype.slice.call(car.children);
+  var n = reals.length;
+  if(n < 2) return;
+
+  var cloned = false, start = 0, setWidth = 0, adjusting = false, settle;
+
+  function realsWidth(){
+    var a = reals[0], b = reals[n - 1];
+    return (b.offsetLeft + b.offsetWidth) - a.offsetLeft;
+  }
+
+  function setup(){
+    // If everything already fits on screen, there's nothing to loop.
+    if(!cloned && realsWidth() <= car.clientWidth + 4) return;
+
+    if(!cloned){
+      var preFrag = document.createDocumentFragment();
+      var postFrag = document.createDocumentFragment();
+      reals.forEach(function(node){
+        var pre = node.cloneNode(true);  pre.setAttribute('aria-hidden','true');  pre.dataset.clone = '1';  preFrag.appendChild(pre);
+        var post = node.cloneNode(true); post.setAttribute('aria-hidden','true'); post.dataset.clone = '1'; postFrag.appendChild(post);
+      });
+      car.appendChild(postFrag);
+      car.insertBefore(preFrag, car.firstChild);
+      cloned = true;
+    }
+
+    // Width of one set = gap-accurate distance between equivalent slides in
+    // adjacent copies. Differences of offsetLeft are reliable regardless of
+    // offsetParent; the absolute value is not, so never use it as a scroll pos.
+    var base = car.children[0].offsetLeft;            // first pre-clone (shown at scrollLeft 0)
+    setWidth = car.children[n].offsetLeft - base;     // first real sits one set in
+    start = setWidth;                                 // scrollLeft that shows the first real
+
+    adjusting = true;
+    car.scrollLeft = start;
+    requestAnimationFrame(function(){ adjusting = false; });
+  }
+
+  function normalize(){
+    if(!cloned || !setWidth || adjusting) return;
+    if(car.querySelector('iframe')) return;            // a video is playing — leave it alone
+    var rel = car.scrollLeft - start;
+    var wrapped = ((rel % setWidth) + setWidth) % setWidth;  // bring into [0, setWidth)
+    if(Math.abs(wrapped - rel) > 1){
+      adjusting = true;
+      car.scrollLeft = start + wrapped;                // identical content -> invisible shift
+      requestAnimationFrame(function(){ adjusting = false; });
+    }
+  }
+
+  requestAnimationFrame(setup);
+  window.addEventListener('load', setup);
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(setup, 150); });
+
+  // Only re-center after scrolling has settled, so we never fight the swipe.
+  car.addEventListener('scroll', function(){
+    if(adjusting) return;
+    clearTimeout(settle);
+    settle = setTimeout(normalize, 120);
+  }, { passive: true });
 })();
 
 /* ---- tap-to-play videos (how-it-works + testimonials) ---- */
@@ -1111,14 +1164,14 @@
   var $ = function(id){ return document.getElementById(id); };
   function save(){ localStorage.setItem(KEY, JSON.stringify(cart)); }
 
-  function setQty(id, delta){
-    var line = cart.find(function(i){ return i.id === id; });
+  function setQty(idx, delta){
+    var line = cart[idx];
     if(!line) return;
     line.qty += delta;
-    if(line.qty <= 0) cart = cart.filter(function(i){ return i.id !== id; });
+    if(line.qty <= 0) cart.splice(idx, 1);
     save(); render();
   }
-  function remove(id){ cart = cart.filter(function(i){ return i.id !== id; }); save(); render(); }
+  function remove(idx){ cart.splice(idx, 1); save(); render(); }
 
   function render(){
     var count = cart.reduce(function(n,i){ return n + i.qty; }, 0);
@@ -1131,18 +1184,19 @@
       if(!cart.length){
         wrap.innerHTML = '<div class="eb-empty">Your cart is empty.<br>Add a card to get started.</div>';
       } else {
-        wrap.innerHTML = cart.map(function(i){
+        wrap.innerHTML = cart.map(function(i, idx){
           var p = CATALOG[i.id]; if(!p) return '';
+          var label = i.finish ? (p.name + ' — ' + i.finish) : p.name;
           return '<div class="eb-citem">'
             + '<div class="eb-thumb" style="background:'+p.thumb+'"></div>'
             + '<div style="flex:1">'
-            + '<div class="eb-ci-name">'+p.name+'</div>'
+            + '<div class="eb-ci-name">'+label+'</div>'
             + '<div class="eb-ci-price">£'+p.price+' each</div>'
             + '<div class="eb-qty">'
-            + '<button data-dec="'+i.id+'">−</button>'
+            + '<button data-dec="'+idx+'">−</button>'
             + '<span>'+i.qty+'</span>'
-            + '<button data-inc="'+i.id+'">+</button>'
-            + '<button class="eb-ci-remove" data-rem="'+i.id+'">Remove</button>'
+            + '<button data-inc="'+idx+'">+</button>'
+            + '<button class="eb-ci-remove" data-rem="'+idx+'">Remove</button>'
             + '</div></div>'
             + '<div class="eb-ci-line">£'+(p.price*i.qty)+'</div>'
             + '</div>';
@@ -1162,14 +1216,14 @@
   if($('ebOverlay')) $('ebOverlay').addEventListener('click', closeDrawer);
   if($('ebItems')) $('ebItems').addEventListener('click', function(e){
     var t = e.target;
-    if(t.dataset.inc) setQty(t.dataset.inc, 1);
-    if(t.dataset.dec) setQty(t.dataset.dec, -1);
-    if(t.dataset.rem) remove(t.dataset.rem);
+    if(t.dataset.inc) setQty(+t.dataset.inc, 1);
+    if(t.dataset.dec) setQty(+t.dataset.dec, -1);
+    if(t.dataset.rem) remove(+t.dataset.rem);
   });
   if($('ebCheckout')) $('ebCheckout').addEventListener('click', function(){
     if(!cart.length) return;
     var btn = $('ebCheckout'); btn.disabled = true; btn.textContent = 'Redirecting…';
-    var cartStr = cart.map(function(i){ return i.id + ':' + i.qty; }).join(',');
+    var cartStr = cart.map(function(i){ return i.id + ':' + (i.finish || '') + ':' + i.qty; }).join(',');
     window.location.href = ORDER_FORM_URL + '/?cart=' + encodeURIComponent(cartStr);
   });
   // reflect changes made on other pages / tabs
