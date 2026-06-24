@@ -145,6 +145,21 @@ nav {
 .ph-includes li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.78); }
 .ph-includes i { color: var(--gold); font-size: 16px; flex-shrink: 0; }
 
+/* Specs accordion (inside the dark hero buy box) */
+.spec-acc { border-top: 0.5px solid var(--dbr); border-bottom: 0.5px solid var(--dbr); margin-bottom: 16px; }
+.spec-acc-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: none; border: none; cursor: pointer; padding: 14px 0; font-family: var(--fd); font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.55); -webkit-tap-highlight-color: transparent; }
+.spec-acc-toggle:hover { color: #fff; }
+.spec-acc-chev { font-size: 18px; color: rgba(255,255,255,0.45); transition: transform 0.25s ease; }
+.spec-acc-toggle[aria-expanded="true"] .spec-acc-chev { transform: rotate(180deg); }
+.spec-acc-panel { padding: 0 0 14px; }
+.spec-acc-panel[hidden] { display: none; }
+.spec-acc-panel .specs-table { width: 100%; border-collapse: collapse; }
+.spec-acc-panel .specs-table td { padding: 8px 0; font-size: 13px; vertical-align: top; border-bottom: 0.5px solid var(--dbr); color: rgba(255,255,255,0.72); }
+.spec-acc-panel .specs-table tr:last-child td { border-bottom: none; }
+.spec-acc-panel .specs-table td:first-child { color: rgba(255,255,255,0.45); width: 38%; padding-right: 14px; white-space: nowrap; }
+.spec-acc-panel .specs-table td:last-child { color: rgba(255,255,255,0.82); font-weight: 400; }
+.spec-acc-panel .specs-table tr { border-bottom: none; }
+
 /* CTA area */
 .ph-cta-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
 .ph-wa-link { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; padding: 8px; }
@@ -170,16 +185,6 @@ nav {
 .wyg-title { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 3px; }
 .wyg-desc { font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.5; }
 
-/* ── FINISH GALLERY ── */
-.fg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.fg-card { border-radius: 12px; overflow: hidden; border: 0.5px solid var(--lbr); background: #fff; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
-.fg-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,6,32,0.12); }
-.fg-img { aspect-ratio: 4/3; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 12px; background: var(--lbg); }
-.fg-img img { width: 100%; height: 100%; object-fit: contain; }
-.fg-info { padding: 12px 14px; background: #fff; }
-.fg-name { font-size: 13px; font-weight: 500; color: var(--lhd); margin-bottom: 2px; }
-.fg-desc { font-size: 12px; color: var(--lbd); }
-.fg-link { font-size: 12px; color: var(--dpr); font-weight: 500; text-decoration: none; }
 
 /* ── SPECS ── */
 .specs-table { width: 100%; border-collapse: collapse; }
@@ -235,7 +240,6 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .nav-links { display: none; }
-  .fg-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 720px) {
   nav { padding: 12px 20px; }
@@ -250,7 +254,6 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   .reaction-item { padding: 24px 0; border-bottom: 0.5px solid var(--lbr); }
   .reaction-item:last-child { border-bottom: none; }
   .wyg-grid { grid-template-columns: 1fr; }
-  .fg-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .testimonial-grid { grid-template-columns: 1fr; }
   .sec-h { font-size: 26px; margin-bottom: 24px; }
   .sticky-bar { padding: 10px 20px; }
@@ -393,6 +396,38 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           <li><i class="ti ti-check"></i>Free UK delivery in protective sleeve</li>
         </ul>
 
+        <!-- Specs accordion -->
+        <div class="spec-acc">
+          <button type="button" class="spec-acc-toggle" id="specAccToggle" aria-expanded="false" aria-controls="specAccPanel">
+            <span>Specs</span>
+            <i class="ti ti-chevron-down spec-acc-chev"></i>
+          </button>
+          <div class="spec-acc-panel" id="specAccPanel" hidden>
+            <table class="specs-table">
+              <tr><td>Material</td><td>Stainless steel core, brushed finish</td></tr>
+              <tr><td>Size</td><td>85.6 × 54 mm (standard credit card)</td></tr>
+              <tr><td>Thickness</td><td>0.8mm</td></tr>
+              <tr><td>NFC chip</td><td>NTAG213 · 180 bytes · unlimited taps</td></tr>
+              <tr><td>Works on</td><td>All iPhones (iOS 13+) and Android (5.0+). No app required.</td></tr>
+              <tr><td>QR code</td><td>Engraved on reverse, works with any phone camera</td></tr>
+              <tr><td>Delivery</td><td>3–5 working days standard · Express available</td></tr>
+              <tr><td>Dispatch</td><td>Within 48 hours of artwork approval</td></tr>
+              <tr><td>Guarantee</td><td>Full refund if you're not completely satisfied</td></tr>
+            </table>
+          </div>
+        </div>
+        <script>
+          (function(){
+            var t = document.getElementById('specAccToggle'), p = document.getElementById('specAccPanel');
+            if(!t || !p) return;
+            t.addEventListener('click', function(){
+              var open = t.getAttribute('aria-expanded') === 'true';
+              t.setAttribute('aria-expanded', open ? 'false' : 'true');
+              p.hidden = open;
+            });
+          })();
+        </script>
+
         <a href="https://wa.me/447700000000?text=Hi%2C+I%27d+like+to+order+a+metal+NFC+card" class="ph-wa-link" style="justify-content:flex-start;padding:0 0 16px;">
           <i class="ti ti-brand-whatsapp" style="color:var(--green);font-size:16px;"></i>
           Prefer to order over WhatsApp? Message us
@@ -482,126 +517,6 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div>
           <p class="wyg-title">Free UK delivery</p>
           <p class="wyg-desc">Dispatched within 48 hours in a protective sleeve. Standard 3-5 day delivery, express available at checkout.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SPECS -->
-<section style="background:var(--lsf);padding:68px 48px;border-top:0.5px solid var(--lbr);" class="sec-pad">
-  <div class="mw">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;" class="specs-cols">
-      <div>
-        <p class="ey-lt">Specs</p>
-        <h2 class="sec-h sec-h-lt" style="margin-bottom:28px;">Built to impress. Built to last.</h2>
-        <table class="specs-table">
-          <tr><td>Material</td><td>Stainless steel core, brushed finish</td></tr>
-          <tr><td>Size</td><td>85.6 × 54 mm (standard credit card)</td></tr>
-          <tr><td>Thickness</td><td>0.8mm</td></tr>
-          <tr><td>NFC chip</td><td>NTAG213 · 180 bytes · unlimited taps</td></tr>
-          <tr><td>Works on</td><td>All iPhones (iOS 13+) and Android (5.0+). No app required.</td></tr>
-          <tr><td>QR code</td><td>Engraved on reverse, works with any phone camera</td></tr>
-          <tr><td>Delivery</td><td>3–5 working days standard · Express available</td></tr>
-          <tr><td>Dispatch</td><td>Within 48 hours of artwork approval</td></tr>
-          <tr><td>Guarantee</td><td>Full refund if you're not completely satisfied</td></tr>
-        </table>
-      </div>
-      <div>
-        <p class="ey-lt" style="margin-bottom:10px;">Available finishes</p>
-        <h2 class="sec-h sec-h-lt" style="font-size:24px;margin-bottom:22px;">8 finishes. All fully custom.</h2>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#C9A32A;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Gold — £99</p><p style="font-size:12px;color:var(--lbd);margin:0;">Brushed gold, black engraving. Best seller.</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#1A1A1A;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Black — £99</p><p style="font-size:12px;color:var(--lbd);margin:0;">Matte black with gold foil option. Very premium.</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#A8A8A8;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Silver — £99</p><p style="font-size:12px;color:var(--lbd);margin:0;">Brushed steel. Clean, minimal, classic.</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#B07040;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Rose gold — £99</p><p style="font-size:12px;color:var(--lbd);margin:0;">Warm copper finish. Unique and memorable.</p></div>
-          </div>
-          <a href="#finish-gallery" style="font-size:13px;color:var(--dpr);font-weight:500;text-decoration:none;padding:12px 0;display:block;">See all 8 finishes ↓</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINISH GALLERY -->
-<section id="finish-gallery" style="background:var(--lbg);padding:68px 48px;border-top:0.5px solid var(--lbr);" class="sec-pad">
-  <div class="mw">
-    <p class="ey-lt">All finishes</p>
-    <h2 class="sec-h sec-h-lt">Every one fully customised to your brand.</h2>
-    <div class="fg-grid">
-      <div class="fg-card" onclick="window.scrollTo({top:0,behavior:'smooth'});switchFinish(document.querySelector('.ph-thumb'), 'assets/images/card-gold-photo.webp', 'Gold', '£99')">
-        <div class="fg-img"><img src="assets/images/card-gold-photo.webp" alt="Gold metal NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Gold brushed</p>
-          <p class="fg-desc">The bestseller. Warm, striking, premium.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £99 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/card-black-photo.webp" alt="Black metal NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Matte black</p>
-          <p class="fg-desc">Dark, bold, with gold or silver engraving.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £99 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/card-silver-photo.webp" alt="Silver metal NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Brushed silver</p>
-          <p class="fg-desc">Clean, minimal, tech-forward.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £99 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/card-rosegold-photo.webp" alt="Rose gold metal NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Rose gold</p>
-          <p class="fg-desc">Warm copper. Unique and unforgettable.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £99 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/card-white-photo.webp" alt="White metal NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">White</p>
-          <p class="fg-desc">Crisp and premium. Gold foil pops perfectly.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £99 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/card-green-photo.webp" alt="Green metal NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Emerald</p>
-          <p class="fg-desc">Standout colour with gold or white engraving.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £99 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/card-purple-photo.webp" alt="Purple metal NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Purple</p>
-          <p class="fg-desc">Bold colour with silver foil. Creative industries favourite.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £99 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/card-custom-photo.webp" alt="Fully custom NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Fully custom</p>
-          <p class="fg-desc">Any colour, any design. Speak to us first.</p>
-          <a href="https://wa.me/447700000000" class="fg-link">Enquire →</a>
         </div>
       </div>
     </div>
@@ -870,20 +785,6 @@ function addToCart() {
   const vb = $("viewBasket"); if (vb) vb.style.display = 'inline-flex';
   openCart();
 }
-// Per-finish "Order" buttons in the gallery add that specific style to the cart.
-function addFinishToCart(finish) {
-  const id = document.body.getAttribute('data-product') || 'metal';
-  cartAdd(id, finish || currentFinish());
-  openCart();
-}
-document.querySelectorAll('.fg-link[data-finishorder]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault(); e.stopPropagation();
-    const card = a.closest('.fg-card');
-    const nm = card && card.querySelector('.fg-name');
-    addFinishToCart(nm ? nm.textContent.trim() : "");
-  });
-});
 // "View basket & checkout" opens the drawer instead of leaving the page
 const viewBasketLink = $("viewBasket");
 if (viewBasketLink) viewBasketLink.addEventListener("click", e => { e.preventDefault(); openCart(); });

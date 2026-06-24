@@ -302,6 +302,8 @@
   .desktop-view .nav-right { display: flex; align-items: center; gap: 26px; }
   .desktop-view .lang-switch { color: var(--grey-dim); font-size: 14px; letter-spacing: 0.5px; }
   .desktop-view .lang-switch b { color: var(--white); font-weight: 600; }
+  .desktop-view .nav-signin { color: var(--grey); text-decoration: none; font-size: 14.5px; font-weight: 600; white-space: nowrap; transition: color 0.2s ease; }
+  .desktop-view .nav-signin:hover { color: var(--white); }
   .desktop-view .nav-cta { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%); color: #1a1206; border: none; font-weight: 700; font-size: 14.5px; padding: 12px 24px; border-radius: 9px; cursor: pointer; white-space: nowrap; }
   .desktop-view .hero-inner {
     position: relative; z-index: 2; flex: 1 1 auto; min-height: 0;
@@ -396,7 +398,7 @@
   .site .video .vlabel{ position:absolute; left:14px; bottom:12px; color:#fff; font-size:13px; font-family:var(--font-display); font-weight:600; z-index:2; }
   .site .video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
-  .site .pgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .site .pgrid{ display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:1fr; gap:12px; }
   .site .pcat{ background:#fff; border:1px solid var(--lp-border); border-radius:16px; padding:20px 12px; text-align:center; min-height:120px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; transition:transform .12s ease, box-shadow .2s ease, border-color .2s ease; -webkit-tap-highlight-color:transparent; }
   .site .pcat:active{ transform:scale(.97); }
   .site .pcat:hover{ box-shadow:0 14px 30px -16px rgba(20,10,32,.3); border-color:var(--gold); }
@@ -406,7 +408,7 @@
   .site .pcat .pn{ font-family:var(--font-display); font-weight:600; font-size:15px; color:var(--lp-heading); }
   .site .shop-all{ text-align:center; margin-top:22px; }
 
-  /* circular swipe carousel: swipe as normal — wraps seamlessly end <-> start */
+  /* swipe carousel — native horizontal scroll (smooth browser momentum) */
   .site .carousel{ display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:4px 18px 14px; margin:0 -18px; scrollbar-width:none; }
   .site .carousel::-webkit-scrollbar{ display:none; }
   .site .tvid{ position:relative; flex:0 0 auto; width:clamp(180px,62vw,230px); scroll-snap-align:center; aspect-ratio:9/16; border-radius:18px; overflow:hidden; cursor:pointer; background:linear-gradient(160deg,#2a1a52,#0E0620); border:1px solid var(--lp-border); box-shadow:0 14px 30px -16px rgba(20,10,32,.45); -webkit-tap-highlight-color:transparent; }
@@ -424,10 +426,8 @@
   .site .faq summary{ list-style:none; cursor:pointer; min-height:56px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:14px; font-family:var(--font-display); font-weight:600; font-size:16px; color:var(--lp-heading); -webkit-tap-highlight-color:transparent; }
   .site .faq summary::-webkit-details-marker{ display:none; }
   .site .faq .pl{ position:relative; width:20px; height:20px; flex-shrink:0; transition:transform .25s ease; }
-  .site .faq .pl::before,.site .faq .pl::after{ content:""; position:absolute; background:var(--gold); border-radius:2px; }
-  .site .faq .pl::before{ top:9px; left:2px; right:2px; height:2px; }
-  .site .faq .pl::after{ left:9px; top:2px; bottom:2px; width:2px; }
-  .site .faq details[open] .pl{ transform:rotate(135deg); }
+  .site .faq .pl::before{ content:""; position:absolute; left:4px; top:5px; width:9px; height:9px; border-right:2px solid var(--gold); border-bottom:2px solid var(--gold); transform:rotate(45deg); }
+  .site .faq details[open] .pl{ transform:rotate(180deg); }
   .site .faq .ans{ padding:0 18px 18px; font-size:15px; color:var(--lp-body); }
 
   .site .industries{ background:var(--lp-surface); }
@@ -468,18 +468,19 @@
     .site .steps{ flex-direction:row; }
     .site .step{ flex:1; flex-direction:column; text-align:center; min-height:0; padding:20px 16px; gap:10px; }
     .site .pgrid{ grid-template-columns:repeat(3,1fr); gap:16px; }
-    .site .pcat{ min-height:170px; }
+    .site .pcat{ min-height:150px; }
     .site .pcat .emo{ font-size:42px; }
-    .site .pcat .pimg{ height:108px; }
+    .site .pcat .pimg{ height:100px; }
     .site .igrid{ grid-template-columns:repeat(4,1fr); }
     .site .tvid{ width:230px; }
     .site .cta-actions{ flex-direction:row; justify-content:center; }
     .site .fcols{ grid-template-columns:2fr 1fr 1fr 1fr; }
   }
   @media (min-width:1024px){
-    .site .pgrid{ grid-template-columns:repeat(3,1fr); max-width:760px; margin:0 auto; }
-    .site .pcat{ min-height:180px; }
-    .site .pcat .emo{ font-size:38px; }
+    .site .pgrid{ grid-template-columns:repeat(6,1fr); }
+    .site .pcat{ min-height:140px; }
+    .site .pcat .emo{ font-size:34px; }
+    .site .pcat .pimg{ height:74px; }
     .site .tvid{ width:240px; }
   }
 
@@ -552,6 +553,7 @@
     <a href="#how">How it works</a>
     <a href="#faq">FAQ</a>
     <a href="mailto:hello@exposureboost.co.uk">Contact</a>
+    <a href="https://app.exposureboost.co.uk" target="_blank" rel="noopener">Sign in</a>
   </nav>
 
   <section class="hero">
@@ -683,6 +685,7 @@
 
       <div class="nav-right">
         <div class="lang-switch"><b>EN</b> | FR</div>
+        <a class="nav-signin" href="https://app.exposureboost.co.uk" target="_blank" rel="noopener">Sign in</a>
         <button class="eb-cart-btn eb-cart-open" aria-label="Open cart">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.5 12h11L21 7H6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="#fff"/><circle cx="18" cy="20" r="1.4" fill="#fff"/></svg>
           Cart<span class="eb-cart-count">0</span>
@@ -811,6 +814,9 @@
         <a class="pcat" href="metal.html"><img class="pimg" src="metalimages/newgold.webp" alt="Gold metal NFC card" loading="lazy"><span class="pn">Metal</span></a>
         <a class="pcat" href="wood.html"><img class="pimg" src="woodimages/newbamboo%20(1)%20(1).webp" alt="Bamboo wooden NFC card" loading="lazy"><span class="pn">Wood</span></a>
         <a class="pcat" href="plastic.html"><img class="pimg" src="plasticimages/newplasticpink.webp" alt="Pink plastic NFC card" loading="lazy"><span class="pn">Plastic</span></a>
+        <a class="pcat" href="mailto:hello@exposureboost.co.uk?subject=Stands%20enquiry"><span class="emo">🪧</span><span class="pn">Stands</span></a>
+        <a class="pcat" href="mailto:hello@exposureboost.co.uk?subject=Keyrings%20enquiry"><span class="emo">🔑</span><span class="pn">Keyrings</span></a>
+        <a class="pcat" href="mailto:hello@exposureboost.co.uk?subject=Accessories%20enquiry"><span class="emo">✨</span><span class="pn">Other Accessories</span></a>
       </div>
     </div>
   </section>
@@ -832,9 +838,11 @@
         <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Sarah P.</div><div class="ro">Estate Agent</div></div></div>
         <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Daniel O.</div><div class="ro">Recruiter</div></div></div>
         <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Amelia R.</div><div class="ro">Consultant</div></div></div>
+        <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Michael B.</div><div class="ro">Financial Adviser</div></div></div>
+        <div class="tvid" data-yt="aqz-KE-bpKQ"><div class="play"></div><div class="meta"><div class="stars">★★★★★</div><div class="nm">Grace L.</div><div class="ro">Marketing Lead</div></div></div>
       </div>
     </div>
-    <div class="wrap"><div class="swipe-hint">← swipe · loops around →</div></div>
+    <div class="wrap"><div class="swipe-hint">← swipe to see more →</div></div>
   </section>
 
   <!-- 5. FAQ -->
@@ -1060,76 +1068,9 @@
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
 })();
 
-/* ---- circular testimonials carousel: swipe normally, wraps end <-> start ----
-   Clones a full set on each side. We DON'T touch the scroll mid-swipe (that's
-   what made it glitchy); instead, once the swipe settles we shift back to the
-   middle copy by a whole set-width. Every copy is identical, so that shift is
-   invisible — giving a seamless loop in both directions. */
-(function(){
-  var car = document.getElementById('tCarousel');
-  if(!car) return;
-  var reals = Array.prototype.slice.call(car.children);
-  var n = reals.length;
-  if(n < 2) return;
-
-  var cloned = false, start = 0, setWidth = 0, adjusting = false, settle;
-
-  function realsWidth(){
-    var a = reals[0], b = reals[n - 1];
-    return (b.offsetLeft + b.offsetWidth) - a.offsetLeft;
-  }
-
-  function setup(){
-    // If everything already fits on screen, there's nothing to loop.
-    if(!cloned && realsWidth() <= car.clientWidth + 4) return;
-
-    if(!cloned){
-      var preFrag = document.createDocumentFragment();
-      var postFrag = document.createDocumentFragment();
-      reals.forEach(function(node){
-        var pre = node.cloneNode(true);  pre.setAttribute('aria-hidden','true');  pre.dataset.clone = '1';  preFrag.appendChild(pre);
-        var post = node.cloneNode(true); post.setAttribute('aria-hidden','true'); post.dataset.clone = '1'; postFrag.appendChild(post);
-      });
-      car.appendChild(postFrag);
-      car.insertBefore(preFrag, car.firstChild);
-      cloned = true;
-    }
-
-    // Width of one set = gap-accurate distance between equivalent slides in
-    // adjacent copies. Differences of offsetLeft are reliable regardless of
-    // offsetParent; the absolute value is not, so never use it as a scroll pos.
-    var base = car.children[0].offsetLeft;            // first pre-clone (shown at scrollLeft 0)
-    setWidth = car.children[n].offsetLeft - base;     // first real sits one set in
-    start = setWidth;                                 // scrollLeft that shows the first real
-
-    adjusting = true;
-    car.scrollLeft = start;
-    requestAnimationFrame(function(){ adjusting = false; });
-  }
-
-  function normalize(){
-    if(!cloned || !setWidth || adjusting) return;
-    if(car.querySelector('iframe')) return;            // a video is playing — leave it alone
-    var rel = car.scrollLeft - start;
-    var wrapped = ((rel % setWidth) + setWidth) % setWidth;  // bring into [0, setWidth)
-    if(Math.abs(wrapped - rel) > 1){
-      adjusting = true;
-      car.scrollLeft = start + wrapped;                // identical content -> invisible shift
-      requestAnimationFrame(function(){ adjusting = false; });
-    }
-  }
-
-  requestAnimationFrame(setup);
-  window.addEventListener('load', setup);
-  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(setup, 150); });
-
-  // Only re-center after scrolling has settled, so we never fight the swipe.
-  car.addEventListener('scroll', function(){
-    if(adjusting) return;
-    clearTimeout(settle);
-    settle = setTimeout(normalize, 120);
-  }, { passive: true });
-})();
+/* ---- testimonials: native horizontal-scroll carousel (free swipe, smooth
+        browser momentum, no JS). Scroll/swipe through to the last card and
+        back; it does not auto-loop. ---- */
 
 /* ---- tap-to-play videos (how-it-works + testimonials) ---- */
 (function(){
