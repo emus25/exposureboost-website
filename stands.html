@@ -44,30 +44,31 @@ body { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; line-
 .wa-btn { background: var(--green); color: #fff; font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 5px; }
 .ghost-lt { background: transparent; color: var(--lhd); font-size: 14px; font-weight: 500; padding: 13px 20px; border-radius: 7px; border: 1.5px solid rgba(14,6,32,0.18); display: block; text-align: center; text-decoration: none; }
 
-/* ── NAV (consistent with index.html) ── */
-.site-nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 15px 48px; background: rgba(14,12,8,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--dbr); }
+/* ── NAV (identical on every page — fixed colours, matches index.html) ── */
+.site-nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 15px 48px; background: rgba(8,4,20,0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.08); }
 .nav-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-icon { width: 32px; height: 32px; border: 1.5px solid var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nav-logo-icon { width: 32px; height: 32px; border: 1.5px solid #f0b429; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .nav-logo-text { font-family: var(--fd); font-size: 17px; font-weight: 700; color: #fff; letter-spacing: 0.3px; }
-.nav-logo-text b { color: var(--gold); }
+.nav-logo-text b { color: #f0b429; }
 .nav-menu { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
-.nav-menu a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color 0.2s ease; }
+.nav-menu a { color: #9b96b3; text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color 0.2s ease; }
 .nav-menu a:hover, .nav-menu a.active { color: #fff; }
 .nav-actions { display: flex; align-items: center; gap: 18px; }
-.nav-signin2 { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap; transition: color 0.2s ease; }
+.nav-signin2 { color: #9b96b3; text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap; transition: color 0.2s ease; }
 .nav-signin2:hover { color: #fff; }
-.nav-cart { position: relative; background: transparent; border: 1px solid var(--dbr); color: #fff; font-family: var(--fd); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
+.nav-cart { position: relative; background: transparent; border: 1.5px solid rgba(140,110,220,0.35); color: #fff; font-family: var(--fd); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
 .nav-cart:hover { border-color: rgba(255,255,255,0.4); }
-.nav-cart i { font-size: 16px; }
-.nav-buy { background: var(--gold); color: var(--dbg); border: none; font-family: var(--fd); font-weight: 700; font-size: 14px; padding: 10px 20px; border-radius: 8px; cursor: pointer; white-space: nowrap; }
+.nav-cart svg { display: block; }
+.nav-cart .cart-count { background: #f0b429; }
+.nav-buy { background: linear-gradient(135deg,#f0b429,#d99a1f); color: #1a1206; border: none; font-family: var(--fd); font-weight: 700; font-size: 14.5px; padding: 11px 22px; border-radius: 9px; cursor: pointer; white-space: nowrap; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .nav-burger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
 .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-burger.open span:nth-child(2) { opacity: 0; }
 .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.nav-drop { position: absolute; top: 100%; left: 0; right: 0; background: #15110a; border-bottom: 0.5px solid var(--dbr); display: flex; flex-direction: column; padding: 6px 20px 16px; transform: translateY(-12px); opacity: 0; visibility: hidden; transition: transform 0.22s ease, opacity 0.18s ease, visibility 0.22s; box-shadow: 0 24px 40px -20px rgba(0,0,0,0.7); }
+.nav-drop { position: absolute; top: 100%; left: 0; right: 0; background: #0c0720; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; padding: 6px 20px 16px; transform: translateY(-12px); opacity: 0; visibility: hidden; transition: transform 0.22s ease, opacity 0.18s ease, visibility 0.22s; box-shadow: 0 24px 40px -20px rgba(0,0,0,0.7); }
 .nav-drop.open { transform: translateY(0); opacity: 1; visibility: visible; }
-.nav-drop a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 13px 4px; border-bottom: 0.5px solid var(--dbr); }
+.nav-drop a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 13px 4px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .nav-drop a:last-child { border-bottom: none; }
 @media (max-width: 900px) {
   .site-nav { padding: 14px 20px; }
@@ -340,15 +341,15 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <!-- STICKY BUY BAR (appears after scrolling past hero) -->
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-left">
-    <img src="standimages/bniredstand.webp" alt="NFC stand" id="stickyBarImg">
+    <img src="standimages/bniwhitestand.webp" alt="NFC stand" id="stickyBarImg">
     <div>
       <p style="font-size:13px;font-weight:500;color:#fff;margin:0;" id="stickyBarName">ExposureBoost NFC Stand</p>
       <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;">Free UK delivery · 48hr dispatch</p>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
-    <span class="sticky-bar-price">£25</span>
-    <a href="#" class="gbtn" style="padding:10px 22px;font-size:14px;" onclick="addToCart();return false;">Order now</a>
+    <span class="sticky-bar-price">£99</span>
+    <a href="#" class="gbtn" style="padding:10px 22px;font-size:14px;white-space:nowrap;" onclick="addToCart();return false;">Order now</a>
   </div>
 </div>
 
@@ -373,7 +374,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   </ul>
   <div class="nav-actions">
     <a class="nav-signin2" href="https://app.exposureboost.co.uk" target="_blank" rel="noopener">Sign in</a>
-    <button class="nav-cart" id="openCart" aria-label="Open cart"><i class="ti ti-shopping-cart"></i>Cart<span class="cart-count" id="cartCount">0</span></button>
+    <button class="nav-cart" id="openCart" aria-label="Open cart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.5 12h11L21 7H6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="#fff"/><circle cx="18" cy="20" r="1.4" fill="#fff"/></svg>Cart<span class="cart-count" id="cartCount">0</span></button>
     <button class="nav-buy" id="navBuy">Buy now</button>
     <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -416,14 +417,29 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
       <!-- LEFT: Image viewer + colour selector + add to cart -->
       <div class="ph-viewer">
         <div class="ph-main">
-          <img src="standimages/bniredstand.webp" alt="ExposureBoost NFC review and profile stand" id="mainCardImg">
+          <img src="standimages/bniwhitestand.webp" alt="ExposureBoost NFC stand — White" id="mainCardImg">
         </div>
 
-
+        <p class="ph-colour-sel">Base colour: <span id="selectedFinish">White</span></p>
+        <div class="finish-chips" id="finishChips">
+          <div class="finish-chip active" data-finish="White"><span class="finish-dot" style="background:#ffffff;border:1px solid rgba(255,255,255,0.4);"></span>White</div>
+          <div class="finish-chip" data-finish="Black"><span class="finish-dot" style="background:#1a1a1a;"></span>Black</div>
+        </div>
+        <p style="font-size:12.5px;color:rgba(255,255,255,0.45);margin:-12px 0 20px;">Any colour can be printed on the face.</p>
+        <script>
+          (function(){
+            var chips = document.querySelectorAll('#finishChips .finish-chip');
+            chips.forEach(function(c){ c.addEventListener('click', function(){
+              chips.forEach(function(x){ x.classList.remove('active'); });
+              c.classList.add('active');
+              var sel = document.getElementById('selectedFinish'); if (sel) sel.textContent = c.getAttribute('data-finish');
+            }); });
+          })();
+        </script>
 
         <!-- Compact buy row -->
         <div class="ph-buy">
-          <div class="ph-buy-price"><span id="displayPrice">£25</span><small>one-time · free UK delivery</small></div>
+          <div class="ph-buy-price"><span id="displayPrice">£99</span><small>one-time · free UK delivery</small></div>
           <button class="ph-add" id="addBtn" onclick="addToCart()">Add to cart</button>
         </div>
         <a class="ph-vb" id="viewBasket" href="#">View basket &amp; checkout →</a>
@@ -559,7 +575,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <section id="wyg-section" style="background:var(--dbg);padding:68px 48px;border-top:0.5px solid var(--dbr);" class="sec-pad">
   <div class="mw">
     <p class="ey-dk">Everything included</p>
-    <h2 class="sec-h sec-h-dk">What you're getting for £25.</h2>
+    <h2 class="sec-h sec-h-dk">What you're getting for £99.</h2>
     <div class="wyg-grid">
       <div class="wyg-item">
         <div class="wyg-icon"><i class="ti ti-device-ipad-horizontal" aria-hidden="true"></i></div>
@@ -718,7 +734,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   <div class="mw" style="text-align:center;">
     <p class="ey-dk" style="color:rgba(255,255,255,0.55);margin-bottom:12px;">Ready to make your mark?</p>
     <h2 class="fd" style="font-size:34px;font-weight:700;margin-bottom:12px;">Order today. In their hand within the week.</h2>
-    <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £25 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
+    <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £99 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
       <a href="#" class="gbtn gbtn-lg" onclick="addToCart();return false;">Order your stand</a>
       <a href="https://wa.me/447700000000" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
@@ -774,8 +790,8 @@ const CATALOG = {
   metal:   { name: "Metal NFC Card",   price: 99, thumb: "linear-gradient(150deg,#e8eaed,#9498a0)" },
   wooden:  { name: "Wooden NFC Card",  price: 70, thumb: "linear-gradient(150deg,#9c6a37,#5e3c1d)" },
   plastic: { name: "Plastic NFC Card", price: 70, thumb: "linear-gradient(155deg,#f7c948,#e0991a)" },
-  stand:   { name: "NFC Stand",        price: 25, thumb: "linear-gradient(160deg,#241845,#3a2a66)" },
-  keyring: { name: "NFC Keyring",     price: 15, thumb: "linear-gradient(160deg,#3a2a66,#241845)" },
+  stand:   { name: "NFC Stand", price: 99, thumb: "linear-gradient(160deg,#241845,#3a2a66)" },
+  keyring: { name: "NFC Keyring (3-pack)", price: 60, thumb: "linear-gradient(160deg,#3a2a66,#241845)" },
 };
 const CART_KEY = "eb_cart";
 const $ = id => document.getElementById(id);
