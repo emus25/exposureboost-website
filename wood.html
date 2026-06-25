@@ -343,8 +343,8 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   <div class="sticky-bar-left">
     <img src="assets/images/wood-bamboo-photo.webp" alt="Wooden card" id="stickyBarImg">
     <div>
-      <p style="font-size:13px;font-weight:500;color:#fff;margin:0;" id="stickyBarName">Wooden NFC card — Bamboo</p>
-      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;">Free UK delivery · 48hr dispatch</p>
+      <p style="font-size:13px;font-weight:500;color:#fff;margin:0;white-space:nowrap;" id="stickyBarName">Wooden NFC card — Bamboo</p>
+      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;white-space:nowrap;">Free UK delivery · 48hr dispatch</p>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
@@ -493,7 +493,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           })();
         </script>
 
-        <a href="https://wa.me/447700000000?text=Hi%2C+I%27d+like+to+order+a+wooden+NFC+card" class="ph-wa-link" style="justify-content:flex-start;padding:0 0 16px;">
+        <a href="https://wa.me/447754888841?text=Hi%2C+I%27d+like+to+order+a+wooden+NFC+card" class="ph-wa-link" style="justify-content:flex-start;padding:0 0 16px;">
           <i class="ti ti-brand-whatsapp" style="color:var(--green);font-size:16px;"></i>
           Prefer to order over WhatsApp? Message us
         </a>
@@ -692,7 +692,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <p class="ey-lt">Questions answered</p>
         <h2 class="sec-h sec-h-lt" style="margin-bottom:8px;">Everything you need to know.</h2>
         <p style="font-size:15px;color:var(--lbd);margin-bottom:28px;">Still unsure? Message us on WhatsApp and we'll answer within the hour.</p>
-        <a href="https://wa.me/447700000000" class="gbtn">Chat on WhatsApp</a>
+        <a href="https://wa.me/447754888841" class="gbtn">Chat on WhatsApp</a>
       </div>
       <div>
         <details>
@@ -732,7 +732,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
     <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £70 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
       <a href="#" class="gbtn gbtn-lg" onclick="addToCart();return false;">Order your wooden card</a>
-      <a href="https://wa.me/447700000000" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+      <a href="https://wa.me/447754888841" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
         <i class="ti ti-brand-whatsapp" style="font-size:17px;color:var(--green);"></i>Message us first
       </a>
     </div>
@@ -794,10 +794,10 @@ let cart = [];
 try { cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]"); } catch (e) {}
 const saveCart = () => localStorage.setItem(CART_KEY, JSON.stringify(cart));
 
-function cartAdd(id, finish) {
+function cartAdd(id, finish, img) {
   finish = finish || "";
   const line = cart.find(i => i.id === id && (i.finish || "") === finish);
-  if (line) line.qty++; else cart.push({ id, finish, qty: 1 });
+  if (line) { line.qty++; if (img) line.img = img; } else cart.push({ id, finish, img: img || "", qty: 1 });
   saveCart(); renderCart();
 }
 function cartSetQty(idx, delta) {
@@ -822,7 +822,7 @@ function renderCart() {
         const p = CATALOG[i.id]; if (!p) return "";
         const label = i.finish ? `${p.name} — ${i.finish}` : p.name;
         return `<div class="citem">
-          <div class="thumb" style="background:${p.thumb}"></div>
+          <div class="thumb" style="background:${i.img ? '#fff' : p.thumb}">${i.img ? '<img src="' + i.img + '" alt="" style="width:100%;height:100%;object-fit:contain;border-radius:7px;">' : ''}</div>
           <div style="flex:1">
             <div class="ci-name">${label}</div>
             <div class="ci-price">£${p.price} each</div>
@@ -871,9 +871,13 @@ function currentFinish() {
   const el = document.getElementById('selectedFinish');
   return el ? el.textContent.trim() : "";
 }
+function currentImg() {
+  const el = document.getElementById('mainCardImg');
+  return el ? el.getAttribute('src') : "";
+}
 function addToCart() {
   const id = document.body.getAttribute('data-product') || 'metal';
-  cartAdd(id, currentFinish());
+  cartAdd(id, currentFinish(), currentImg());
   const btn = $("addBtn");
   if (btn) {
     btn.textContent = '✓ Added to basket'; btn.classList.add('added');

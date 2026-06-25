@@ -100,7 +100,7 @@ body { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; line-
 
 /* LEFT - Image viewer */
 .ph-viewer { position: sticky; top: 74px; }
-.ph-main { background: var(--lbg); border-radius: 16px; overflow: hidden; aspect-ratio: 16/9; max-height: 340px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.ph-main { background: var(--lbg); border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; max-height: 320px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
 .ph-main img { width: 100%; height: 100%; object-fit: contain; padding: 6px; transition: opacity 0.2s; }
 
 /* colour selector label (driven by thumbnails) */
@@ -341,10 +341,10 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <!-- STICKY BUY BAR (appears after scrolling past hero) -->
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-left">
-    <img src="standimages/3stands.webp" alt="NFC stand" id="stickyBarImg">
+    <img src="standimages/whitestand1.webp" alt="NFC stand" id="stickyBarImg">
     <div>
-      <p style="font-size:13px;font-weight:500;color:#fff;margin:0;" id="stickyBarName">ExposureBoost NFC Stand</p>
-      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;">Free UK delivery · 48hr dispatch</p>
+      <p style="font-size:13px;font-weight:500;color:#fff;margin:0;white-space:nowrap;" id="stickyBarName">ExposureBoost NFC Stand</p>
+      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;white-space:nowrap;">Free UK delivery · 48hr dispatch</p>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
@@ -417,13 +417,13 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
       <!-- LEFT: Image viewer + colour selector + add to cart -->
       <div class="ph-viewer">
         <div class="ph-main">
-          <img src="standimages/3stands.webp" alt="ExposureBoost NFC stands" id="mainCardImg">
+          <img src="standimages/whitestand1.webp" alt="ExposureBoost NFC stand — White" id="mainCardImg">
         </div>
 
         <p class="ph-colour-sel">Base colour: <span id="selectedFinish">White</span></p>
         <div class="finish-chips" id="finishChips">
-          <div class="finish-chip active" data-finish="White"><span class="finish-dot" style="background:#ffffff;border:1px solid rgba(255,255,255,0.4);"></span>White</div>
-          <div class="finish-chip" data-finish="Black"><span class="finish-dot" style="background:#1a1a1a;"></span>Black</div>
+          <div class="finish-chip active" data-finish="White" data-img="standimages/whitestand1.webp"><span class="finish-dot" style="background:#ffffff;border:1px solid rgba(255,255,255,0.4);"></span>White</div>
+          <div class="finish-chip" data-finish="Black" data-img="standimages/blackstand.webp"><span class="finish-dot" style="background:#1a1a1a;"></span>Black</div>
         </div>
         <p style="font-size:12.5px;color:rgba(255,255,255,0.45);margin:-12px 0 20px;">Any colour can be printed on the face.</p>
         <script>
@@ -433,6 +433,9 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
               chips.forEach(function(x){ x.classList.remove('active'); });
               c.classList.add('active');
               var sel = document.getElementById('selectedFinish'); if (sel) sel.textContent = c.getAttribute('data-finish');
+              var img = c.getAttribute('data-img'), main = document.getElementById('mainCardImg');
+              if (img && main) main.src = img;
+              var simg = document.getElementById('stickyBarImg'); if (img && simg) simg.src = img;
             }); });
           })();
         </script>
@@ -498,7 +501,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           })();
         </script>
 
-        <a href="https://wa.me/+447754888841?text=Hi%2C+I%27d+like+to+order+an+NFC+stand" class="ph-wa-link" style="justify-content:flex-start;padding:0 0 16px;">
+        <a href="https://wa.me/447754888841?text=Hi%2C+I%27d+like+to+order+an+NFC+stand" class="ph-wa-link" style="justify-content:flex-start;padding:0 0 16px;">
           <i class="ti ti-brand-whatsapp" style="color:var(--green);font-size:16px;"></i>
           Prefer to order over WhatsApp? Message us
         </a>
@@ -697,7 +700,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <p class="ey-lt">Questions answered</p>
         <h2 class="sec-h sec-h-lt" style="margin-bottom:8px;">Everything you need to know.</h2>
         <p style="font-size:15px;color:var(--lbd);margin-bottom:28px;">Still unsure? Message us on WhatsApp and we'll answer within the hour.</p>
-        <a href="https://wa.me/+447754888841" class="gbtn">Chat on WhatsApp</a>
+        <a href="https://wa.me/447754888841" class="gbtn">Chat on WhatsApp</a>
       </div>
       <div>
         <details>
@@ -737,7 +740,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
     <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £99 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
       <a href="#" class="gbtn gbtn-lg" onclick="addToCart();return false;">Order your stand</a>
-      <a href="https://wa.me/+447754888841" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
+      <a href="https://wa.me/447754888841" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
         <i class="ti ti-brand-whatsapp" style="font-size:17px;color:var(--green);"></i>Message us first
       </a>
     </div>
@@ -799,10 +802,10 @@ let cart = [];
 try { cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]"); } catch (e) {}
 const saveCart = () => localStorage.setItem(CART_KEY, JSON.stringify(cart));
 
-function cartAdd(id, finish) {
+function cartAdd(id, finish, img) {
   finish = finish || "";
   const line = cart.find(i => i.id === id && (i.finish || "") === finish);
-  if (line) line.qty++; else cart.push({ id, finish, qty: 1 });
+  if (line) { line.qty++; if (img) line.img = img; } else cart.push({ id, finish, img: img || "", qty: 1 });
   saveCart(); renderCart();
 }
 function cartSetQty(idx, delta) {
@@ -827,7 +830,7 @@ function renderCart() {
         const p = CATALOG[i.id]; if (!p) return "";
         const label = i.finish ? `${p.name} — ${i.finish}` : p.name;
         return `<div class="citem">
-          <div class="thumb" style="background:${p.thumb}"></div>
+          <div class="thumb" style="background:${i.img ? '#fff' : p.thumb}">${i.img ? '<img src="' + i.img + '" alt="" style="width:100%;height:100%;object-fit:contain;border-radius:7px;">' : ''}</div>
           <div style="flex:1">
             <div class="ci-name">${label}</div>
             <div class="ci-price">£${p.price} each</div>
@@ -876,9 +879,13 @@ function currentFinish() {
   const el = document.getElementById('selectedFinish');
   return el ? el.textContent.trim() : "";
 }
+function currentImg() {
+  const el = document.getElementById('mainCardImg');
+  return el ? el.getAttribute('src') : "";
+}
 function addToCart() {
   const id = document.body.getAttribute('data-product') || 'metal';
-  cartAdd(id, currentFinish());
+  cartAdd(id, currentFinish(), currentImg());
   const btn = $("addBtn");
   if (btn) {
     btn.textContent = '✓ Added to basket'; btn.classList.add('added');
