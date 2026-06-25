@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wooden NFC Business Cards | ExposureBoost</title>
+<title>NFC Keyrings | ExposureBoost</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --dbg: #1C140C;
-  --dsf: #2A2014;
-  --dpr: #8A5A2B;
-  --dlt: #DDBE92;
-  --dbr: rgba(221, 190, 146, 0.16);
-  --lbg: #F5EEE3;
-  --lsf: #EBE1D2;
-  --lbr: rgba(40, 26, 12, 0.10);
-  --lhd: #2A1C0E;
-  --lbd: #6B5A45;
-  --gold: #B07B3E;
+  --dbg: #0E0620;
+  --dsf: #18083A;
+  --dpr: #66289E;
+  --dlt: #C090D8;
+  --dbr: rgba(192, 144, 216, 0.14);
+  --lbg: #F8F5F2;
+  --lsf: #EFECEA;
+  --lbr: rgba(14, 6, 32, 0.08);
+  --lhd: #140A20;
+  --lbd: #5C5060;
+  --gold: #D4A843;
   --green: #25D366;
   --fd: 'Space Grotesk', system-ui, sans-serif;
 }
@@ -335,19 +335,19 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 @media (max-width: 480px) { .cart-drawer { width: 100%; } }
 </style>
 </head>
-<body data-product="wooden">
+<body data-product="keyring">
 
 <!-- STICKY BUY BAR (appears after scrolling past hero) -->
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-left">
-    <img src="assets/images/wood-bamboo-photo.webp" alt="Wooden card" id="stickyBarImg">
+    <img src="keyringimages/keyrings.webp" alt="NFC keyring" id="stickyBarImg">
     <div>
-      <p style="font-size:13px;font-weight:500;color:#fff;margin:0;" id="stickyBarName">Wooden NFC card — Bamboo</p>
+      <p style="font-size:13px;font-weight:500;color:#fff;margin:0;" id="stickyBarName">ExposureBoost NFC Keyring</p>
       <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;">Free UK delivery · 48hr dispatch</p>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
-    <span class="sticky-bar-price">£99</span>
+    <span class="sticky-bar-price">£15</span>
     <a href="#" class="gbtn" style="padding:10px 22px;font-size:14px;" onclick="addToCart();return false;">Order now</a>
   </div>
 </div>
@@ -366,10 +366,10 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   </a>
   <ul class="nav-menu">
     <li><a href="metal.html">Metal</a></li>
-    <li><a href="wood.html" class="active">Wood</a></li>
+    <li><a href="wood.html">Wood</a></li>
     <li><a href="plastic.html">Plastic</a></li>
     <li><a href="stands.html">Stands</a></li>
-    <li><a href="keyrings.html">Keyrings</a></li>
+    <li><a href="keyrings.html" class="active">Keyrings</a></li>
   </ul>
   <div class="nav-actions">
     <a class="nav-signin2" href="https://app.exposureboost.co.uk" target="_blank" rel="noopener">Sign in</a>
@@ -408,7 +408,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <section class="product-hero" id="productHero">
   <div class="mw">
     <div class="breadcrumb" style="margin-bottom:20px;">
-      <a href="index.html">Home</a> &nbsp;/&nbsp; Wooden NFC cards
+      <a href="index.html">Home</a> &nbsp;/&nbsp; NFC Keyrings
     </div>
 
     <div class="ph-grid">
@@ -416,22 +416,14 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
       <!-- LEFT: Image viewer + colour selector + add to cart -->
       <div class="ph-viewer">
         <div class="ph-main">
-          <img src="assets/images/wood-bamboo-photo.webp" alt="Wooden NFC business card — Bamboo finish" id="mainCardImg">
+          <img src="keyringimages/keyrings.webp" alt="ExposureBoost NFC keyring" id="mainCardImg">
         </div>
 
-        <p class="ph-colour-sel">Wood: <span id="selectedFinish">Bamboo</span></p>
 
-        <!-- Tap a card to change the colour & main image -->
-        <div class="ph-thumbs" id="thumbGrid">
-          <div class="ph-thumb active" onclick="switchFinish(this, 'assets/images/wood-bamboo-photo.webp', 'Bamboo', '£70')"><img src="assets/images/wood-bamboo-photo.webp" alt="Bamboo"></div>
-          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-walnut-photo.webp', 'Walnut', '£70')"><img src="assets/images/wood-walnut-photo.webp" alt="Walnut"></div>
-          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-maple-photo.webp', 'Maple', '£70')"><img src="assets/images/wood-maple-photo.webp" alt="Maple"></div>
-          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-cherry-photo.webp', 'Cherry', '£70')"><img src="assets/images/wood-cherry-photo.webp" alt="Cherry"></div>
-        </div>
 
         <!-- Compact buy row -->
         <div class="ph-buy">
-          <div class="ph-buy-price"><span id="displayPrice">£70</span><small>one-time · free UK delivery</small></div>
+          <div class="ph-buy-price"><span id="displayPrice">£15</span><small>one-time · free UK delivery</small></div>
           <button class="ph-add" id="addBtn" onclick="addToCart()">Add to cart</button>
         </div>
         <a class="ph-vb" id="viewBasket" href="#">View basket &amp; checkout →</a>
@@ -439,19 +431,19 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 
       <!-- RIGHT: Product info -->
       <div class="ph-info">
-        <span class="product-tag">Bestseller</span>
-        <h1 class="ph-h1">Wooden NFC business card</h1>
+        <span class="product-tag">On your keys</span>
+        <h1 class="ph-h1">NFC keyring</h1>
         <div class="ph-rating">
           <span class="ph-stars">★★★★★</span>
           <span>4.9 · 127 reviews</span>
         </div>
-        <p class="ph-tagline">The card people pick up and ask about. Laser-engraved into real wood. Tap to share everything, instantly.</p>
+        <p class="ph-tagline">Your details on your keys. Tap it to any phone to share contact, socials and reviews — wherever you go.</p>
 
         <hr class="ph-divider">
 
         <!-- What's included -->
         <ul class="ph-includes">
-          <li><i class="ti ti-check"></i>Custom laser-engraved to your logo and branding</li>
+          <li><i class="ti ti-check"></i>Custom printed to your logo and branding</li>
           <li><i class="ti ti-check"></i>Digital profile — website, socials, contact, reviews</li>
           <li><i class="ti ti-check"></i>Free profile updates forever, change anytime</li>
           <li><i class="ti ti-check"></i>QR code backup engraved on reverse</li>
@@ -466,9 +458,9 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           </button>
           <div class="spec-acc-panel" id="specAccPanel" hidden>
             <table class="specs-table">
-              <tr><td>Material</td><td>Genuine wood, sustainably sourced, sealed finish</td></tr>
-              <tr><td>Size</td><td>85.6 × 54 mm (standard credit card)</td></tr>
-              <tr><td>Thickness</td><td>1.0mm</td></tr>
+              <tr><td>Material</td><td>Zinc alloy &amp; epoxy keyring</td></tr>
+              <tr><td>Size</td><td>Approx. 40 mm</td></tr>
+              <tr><td>Fitting</td><td>Split-ring keychain loop</td></tr>
               <tr><td>NFC chip</td><td>NTAG213 · 180 bytes · unlimited taps</td></tr>
               <tr><td>Works on</td><td>All iPhones (iOS 13+) and Android (5.0+). No app required.</td></tr>
               <tr><td>QR code</td><td>Engraved on reverse, works with any phone camera</td></tr>
@@ -490,7 +482,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           })();
         </script>
 
-        <a href="https://wa.me/447700000000?text=Hi%2C+I%27d+like+to+order+a+wooden+NFC+card" class="ph-wa-link" style="justify-content:flex-start;padding:0 0 16px;">
+        <a href="https://wa.me/447700000000?text=Hi%2C+I%27d+like+to+order+an+NFC+keyring" class="ph-wa-link" style="justify-content:flex-start;padding:0 0 16px;">
           <i class="ti ti-brand-whatsapp" style="color:var(--green);font-size:16px;"></i>
           Prefer to order over WhatsApp? Message us
         </a>
@@ -511,13 +503,13 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <!-- THE REACTION -->
 <section style="background:var(--lbg);padding:68px 48px;" class="sec-pad">
   <div class="mw">
-    <p class="ey-lt">Why wood</p>
-    <h2 class="sec-h sec-h-lt">The moment they feel it, everything changes.</h2>
+    <p class="ey-lt">Why a keyring</p>
+    <h2 class="sec-h sec-h-lt">The one you never leave behind.</h2>
     <div class="reaction-grid">
       <div class="reaction-item">
-        <div class="reaction-icon"><i class="ti ti-leaf" aria-hidden="true"></i></div>
-        <p class="reaction-title">Real, natural wood</p>
-        <p class="reaction-text">Sustainably sourced, sealed and warm to the touch. No two are identical — the grain makes every card one of a kind.</p>
+        <div class="reaction-icon"><i class="ti ti-key" aria-hidden="true"></i></div>
+        <p class="reaction-title">Always on you</p>
+        <p class="reaction-text">It lives on your keys, so you can share your details anywhere — no wallet, no fumbling for a card.</p>
       </div>
       <div class="reaction-item">
         <div class="reaction-icon"><i class="ti ti-phone-call" aria-hidden="true"></i></div>
@@ -567,13 +559,13 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <section id="wyg-section" style="background:var(--dbg);padding:68px 48px;border-top:0.5px solid var(--dbr);" class="sec-pad">
   <div class="mw">
     <p class="ey-dk">Everything included</p>
-    <h2 class="sec-h sec-h-dk">What you're getting for £70.</h2>
+    <h2 class="sec-h sec-h-dk">What you're getting for £15.</h2>
     <div class="wyg-grid">
       <div class="wyg-item">
-        <div class="wyg-icon"><i class="ti ti-credit-card" aria-hidden="true"></i></div>
+        <div class="wyg-icon"><i class="ti ti-key" aria-hidden="true"></i></div>
         <div>
-          <p class="wyg-title">Custom wooden card</p>
-          <p class="wyg-desc">Your logo and branding laser-engraved into genuine sustainable wood. Credit-card size, sealed finish, warm and distinctive.</p>
+          <p class="wyg-title">Custom NFC keyring</p>
+          <p class="wyg-desc">A pocket-sized keyring printed to your brand. Tap it to any phone to share your full profile in one move.</p>
         </div>
       </div>
       <div class="wyg-item">
@@ -619,7 +611,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <section style="background:var(--lsf);padding:68px 48px;border-top:0.5px solid var(--lbr);" class="sec-pad">
   <div class="mw">
     <p class="ey-lt">Real customers</p>
-    <h2 class="sec-h sec-h-lt">The card that sells itself.</h2>
+    <h2 class="sec-h sec-h-lt">Small thing, big impression.</h2>
     <div class="testimonial-grid">
       <div class="t-card">
         <div class="t-video">
@@ -726,9 +718,9 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   <div class="mw" style="text-align:center;">
     <p class="ey-dk" style="color:rgba(255,255,255,0.55);margin-bottom:12px;">Ready to make your mark?</p>
     <h2 class="fd" style="font-size:34px;font-weight:700;margin-bottom:12px;">Order today. In their hand within the week.</h2>
-    <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £70 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
+    <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £15 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <a href="#" class="gbtn gbtn-lg" onclick="addToCart();return false;">Order your wooden card</a>
+      <a href="#" class="gbtn gbtn-lg" onclick="addToCart();return false;">Order your keyring</a>
       <a href="https://wa.me/447700000000" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
         <i class="ti ti-brand-whatsapp" style="font-size:17px;color:var(--green);"></i>Message us first
       </a>

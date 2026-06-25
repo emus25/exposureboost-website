@@ -44,19 +44,36 @@ body { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; line-
 .wa-btn { background: var(--green); color: #fff; font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 5px; }
 .ghost-lt { background: transparent; color: var(--lhd); font-size: 14px; font-weight: 500; padding: 13px 20px; border-radius: 7px; border: 1.5px solid rgba(14,6,32,0.18); display: block; text-align: center; text-decoration: none; }
 
-/* ── NAV ── */
-nav {
-  background: var(--dbg); padding: 13px 48px;
-  display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 0.5px solid var(--dbr);
-  position: sticky; top: 0; z-index: 100;
+/* ── NAV (consistent with index.html) ── */
+.site-nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 15px 48px; background: rgba(14,12,8,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--dbr); }
+.nav-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { width: 32px; height: 32px; border: 1.5px solid var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nav-logo-text { font-family: var(--fd); font-size: 17px; font-weight: 700; color: #fff; letter-spacing: 0.3px; }
+.nav-logo-text b { color: var(--gold); }
+.nav-menu { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
+.nav-menu a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color 0.2s ease; }
+.nav-menu a:hover, .nav-menu a.active { color: #fff; }
+.nav-actions { display: flex; align-items: center; gap: 18px; }
+.nav-signin2 { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap; transition: color 0.2s ease; }
+.nav-signin2:hover { color: #fff; }
+.nav-cart { position: relative; background: transparent; border: 1px solid var(--dbr); color: #fff; font-family: var(--fd); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
+.nav-cart:hover { border-color: rgba(255,255,255,0.4); }
+.nav-cart i { font-size: 16px; }
+.nav-buy { background: var(--gold); color: var(--dbg); border: none; font-family: var(--fd); font-weight: 700; font-size: 14px; padding: 10px 20px; border-radius: 8px; cursor: pointer; white-space: nowrap; }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.nav-burger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-drop { position: absolute; top: 100%; left: 0; right: 0; background: #15110a; border-bottom: 0.5px solid var(--dbr); display: flex; flex-direction: column; padding: 6px 20px 16px; transform: translateY(-12px); opacity: 0; visibility: hidden; transition: transform 0.22s ease, opacity 0.18s ease, visibility 0.22s; box-shadow: 0 24px 40px -20px rgba(0,0,0,0.7); }
+.nav-drop.open { transform: translateY(0); opacity: 1; visibility: visible; }
+.nav-drop a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 13px 4px; border-bottom: 0.5px solid var(--dbr); }
+.nav-drop a:last-child { border-bottom: none; }
+@media (max-width: 900px) {
+  .site-nav { padding: 14px 20px; }
+  .nav-menu, .nav-signin2, .nav-buy { display: none; }
+  .nav-burger { display: flex; }
 }
-.nav-logo { display: block; height: 36px; width: auto; }
-.nav-links { display: flex; gap: 24px; }
-.nav-links a { font-size: 13px; color: rgba(255,255,255,0.42); text-decoration: none; transition: color 0.15s; }
-.nav-links a:hover { color: rgba(255,255,255,0.8); }
-.nav-links a.active { color: var(--gold); }
-.nav-actions { display: flex; gap: 8px; align-items: center; }
 
 /* ── STICKY BUY BAR ── */
 .sticky-bar {
@@ -145,6 +162,21 @@ nav {
 .ph-includes li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.78); }
 .ph-includes i { color: var(--gold); font-size: 16px; flex-shrink: 0; }
 
+/* Specs accordion (inside the dark hero buy box) */
+.spec-acc { border-top: 0.5px solid var(--dbr); border-bottom: 0.5px solid var(--dbr); margin-bottom: 16px; }
+.spec-acc-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: none; border: none; cursor: pointer; padding: 14px 0; font-family: var(--fd); font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.55); -webkit-tap-highlight-color: transparent; }
+.spec-acc-toggle:hover { color: #fff; }
+.spec-acc-chev { font-size: 18px; color: rgba(255,255,255,0.45); transition: transform 0.25s ease; }
+.spec-acc-toggle[aria-expanded="true"] .spec-acc-chev { transform: rotate(180deg); }
+.spec-acc-panel { padding: 0 0 14px; }
+.spec-acc-panel[hidden] { display: none; }
+.spec-acc-panel .specs-table { width: 100%; border-collapse: collapse; }
+.spec-acc-panel .specs-table td { padding: 8px 0; font-size: 13px; vertical-align: top; border-bottom: 0.5px solid var(--dbr); color: rgba(255,255,255,0.72); }
+.spec-acc-panel .specs-table tr:last-child td { border-bottom: none; }
+.spec-acc-panel .specs-table td:first-child { color: rgba(255,255,255,0.45); width: 38%; padding-right: 14px; white-space: nowrap; }
+.spec-acc-panel .specs-table td:last-child { color: rgba(255,255,255,0.82); font-weight: 400; }
+.spec-acc-panel .specs-table tr { border-bottom: none; }
+
 /* CTA area */
 .ph-cta-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
 .ph-wa-link { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; padding: 8px; }
@@ -162,6 +194,12 @@ nav {
 .reaction-title { font-family: var(--fd); font-size: 18px; font-weight: 500; color: var(--lhd); margin-bottom: 8px; }
 .reaction-text { font-size: 14px; color: var(--lbd); line-height: 1.6; }
 
+/* ── ORDER PROCESS ── */
+.steps-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step-num { width: 38px; height: 38px; border-radius: 10px; background: var(--dpr); color: #fff; font-family: var(--fd); font-weight: 700; font-size: 17px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.step-title { font-family: var(--fd); font-size: 16px; font-weight: 600; color: var(--lhd); margin-bottom: 6px; }
+.step-desc { font-size: 14px; color: var(--lbd); line-height: 1.5; }
+
 /* ── WHAT YOU GET ── */
 .wyg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .wyg-item { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; background: rgba(255,255,255,0.04); border: 0.5px solid var(--dbr); border-radius: 10px; }
@@ -170,16 +208,6 @@ nav {
 .wyg-title { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 3px; }
 .wyg-desc { font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.5; }
 
-/* ── FINISH GALLERY ── */
-.fg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.fg-card { border-radius: 12px; overflow: hidden; border: 0.5px solid var(--lbr); background: #fff; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
-.fg-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,6,32,0.12); }
-.fg-img { aspect-ratio: 4/3; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 12px; background: var(--lbg); }
-.fg-img img { width: 100%; height: 100%; object-fit: contain; }
-.fg-info { padding: 12px 14px; background: #fff; }
-.fg-name { font-size: 13px; font-weight: 500; color: var(--lhd); margin-bottom: 2px; }
-.fg-desc { font-size: 12px; color: var(--lbd); }
-.fg-link { font-size: 12px; color: var(--dpr); font-weight: 500; text-decoration: none; }
 
 /* ── SPECS ── */
 .specs-table { width: 100%; border-collapse: collapse; }
@@ -190,8 +218,10 @@ nav {
 .specs-table td:last-child { color: var(--lhd); font-weight: 500; }
 
 /* ── TESTIMONIALS ── */
-.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.t-card { background: #fff; border: 0.5px solid var(--lbr); border-radius: 12px; overflow: hidden; }
+.testimonial-grid { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 0 4px 6px; margin: 0 -4px; scrollbar-width: none; }
+.testimonial-grid::-webkit-scrollbar { display: none; }
+.swipe-hint { text-align: center; font-size: 12px; color: var(--lbd); margin-top: 14px; }
+.t-card { flex: 0 0 auto; width: clamp(260px, 78vw, 320px); scroll-snap-align: center; background: #fff; border: 0.5px solid var(--lbr); border-radius: 12px; overflow: hidden; }
 .t-video { aspect-ratio: 9/16; background: var(--dsf); display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; max-height: 280px; }
 .t-play { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; }
 .t-play i { font-size: 20px; color: #fff; margin-left: 3px; }
@@ -211,8 +241,8 @@ summary {
   list-style: none;
 }
 summary::-webkit-details-marker { display: none; }
-summary::after { content: '\002B'; font-size: 20px; color: var(--dpr); flex-shrink: 0; }
-details[open] summary::after { content: '\002212'; }
+summary::after { content: ''; width: 8px; height: 8px; border-right: 2px solid var(--dpr); border-bottom: 2px solid var(--dpr); transform: rotate(45deg); flex-shrink: 0; transition: transform 0.2s ease; }
+details[open] summary::after { transform: rotate(225deg); }
 .faq-answer { font-size: 14px; color: var(--lbd); line-height: 1.7; padding-bottom: 18px; max-width: 640px; }
 
 /* ── FOOTER ── */
@@ -235,7 +265,6 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .nav-links { display: none; }
-  .fg-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 720px) {
   nav { padding: 12px 20px; }
@@ -249,9 +278,15 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   .reaction-grid { grid-template-columns: 1fr; gap: 0; }
   .reaction-item { padding: 24px 0; border-bottom: 0.5px solid var(--lbr); }
   .reaction-item:last-child { border-bottom: none; }
-  .wyg-grid { grid-template-columns: 1fr; }
-  .fg-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .testimonial-grid { grid-template-columns: 1fr; }
+  .wyg-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .wyg-item { padding: 12px; gap: 10px; }
+  .wyg-icon { width: 30px; height: 30px; border-radius: 7px; }
+  .wyg-icon i { font-size: 15px; }
+  .wyg-title { font-size: 12.5px; margin-bottom: 2px; }
+  .wyg-desc { font-size: 11px; line-height: 1.35; }
+  #wyg-section.sec-pad { padding-top: 34px !important; padding-bottom: 34px !important; }
+  .steps-row { grid-template-columns: 1fr; gap: 22px; }
+  .t-card { width: 80vw; max-width: 320px; }
   .sec-h { font-size: 26px; margin-bottom: 24px; }
   .sticky-bar { padding: 10px 20px; }
   .sticky-bar-left img { display: none; }
@@ -312,28 +347,62 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
-    <span class="sticky-bar-price">£70</span>
+    <span class="sticky-bar-price">£99</span>
     <a href="#" class="gbtn" style="padding:10px 22px;font-size:14px;" onclick="addToCart();return false;">Order now</a>
   </div>
 </div>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html"><img src="assets/images/logo-white.png" alt="ExposureBoost" class="nav-logo"></a>
-  <div class="nav-links">
+<!-- NAV (consistent with index.html) -->
+<header class="site-nav">
+  <a class="nav-logo-link" href="index.html">
+    <span class="nav-logo-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M5 9C8.5 5.5 15.5 5.5 19 9" stroke="#6d3fd1" stroke-width="2" stroke-linecap="round"/>
+        <path d="M7.5 12.5C9.9 10 14.1 10 16.5 12.5" stroke="#f0b429" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="12" cy="16.5" r="1.6" fill="#f0b429"/>
+      </svg>
+    </span>
+    <span class="nav-logo-text">EXPOSURE<b>BOOST</b></span>
+  </a>
+  <ul class="nav-menu">
+    <li><a href="metal.html">Metal</a></li>
+    <li><a href="wood.html">Wood</a></li>
+    <li><a href="plastic.html" class="active">Plastic</a></li>
+    <li><a href="stands.html">Stands</a></li>
+    <li><a href="keyrings.html">Keyrings</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a class="nav-signin2" href="https://app.exposureboost.co.uk" target="_blank" rel="noopener">Sign in</a>
+    <button class="nav-cart" id="openCart" aria-label="Open cart"><i class="ti ti-shopping-cart"></i>Cart<span class="cart-count" id="cartCount">0</span></button>
+    <button class="nav-buy" id="navBuy">Buy now</button>
+    <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="nav-drop" id="navDrop" aria-label="Mobile menu">
     <a href="metal.html">Metal</a>
     <a href="wood.html">Wood</a>
-    <a href="plastic.html" class="active">Plastic</a>
-    <a href="/stands">Stands</a>
-    <a href="/reviews">Review management</a>
-  </div>
-  <div class="nav-actions">
-    <a href="https://wa.me/447700000000" class="wa-btn">
-      <i class="ti ti-brand-whatsapp" style="font-size:16px;"></i>WhatsApp
-    </a>
-    <button class="cart-btn" id="openCart" aria-label="Open cart"><i class="ti ti-shopping-cart"></i>Cart<span class="cart-count" id="cartCount">0</span></button>
-  </div>
-</nav>
+    <a href="plastic.html">Plastic</a>
+    <a href="stands.html">Stands</a>
+    <a href="keyrings.html">Keyrings</a>
+    <a href="https://app.exposureboost.co.uk" target="_blank" rel="noopener">Sign in</a>
+  </nav>
+</header>
+<script>
+  (function(){
+    var b = document.getElementById('navBurger'), d = document.getElementById('navDrop');
+    if (b && d) {
+      b.addEventListener('click', function(){
+        var open = d.classList.toggle('open');
+        b.classList.toggle('open', open);
+        b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      d.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ d.classList.remove('open'); b.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+      });
+    }
+    var buy = document.getElementById('navBuy');
+    if (buy) buy.addEventListener('click', function(){ var t = document.getElementById('productHero'); if (t) t.scrollIntoView({ behavior:'smooth' }); });
+  })();
+</script>
 
 <!-- PRODUCT HERO -->
 <section class="product-hero" id="productHero">
@@ -373,24 +442,56 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 
       <!-- RIGHT: Product info -->
       <div class="ph-info">
-        <span class="product-tag">Best value</span>
+        <span class="product-tag">Bestseller</span>
         <h1 class="ph-h1">Plastic NFC business card</h1>
         <div class="ph-rating">
           <span class="ph-stars">★★★★★</span>
-          <span>4.8 · 214 reviews</span>
+          <span>4.9 · 127 reviews</span>
         </div>
-        <p class="ph-tagline">Full-colour, lightweight and brilliant value. Print edge-to-edge artwork and tap to share everything, instantly.</p>
+        <p class="ph-tagline">The everyday NFC card in full colour. Durable, lightweight and great value. Tap to share everything, instantly.</p>
 
         <hr class="ph-divider">
 
         <!-- What's included -->
         <ul class="ph-includes">
-          <li><i class="ti ti-check"></i>Full-colour print, edge to edge, on both sides</li>
+          <li><i class="ti ti-check"></i>Custom laser-engraved to your logo and branding</li>
           <li><i class="ti ti-check"></i>Digital profile — website, socials, contact, reviews</li>
           <li><i class="ti ti-check"></i>Free profile updates forever, change anytime</li>
-          <li><i class="ti ti-check"></i>QR code backup printed on reverse</li>
+          <li><i class="ti ti-check"></i>QR code backup engraved on reverse</li>
           <li><i class="ti ti-check"></i>Free UK delivery in protective sleeve</li>
         </ul>
+
+        <!-- Specs accordion -->
+        <div class="spec-acc">
+          <button type="button" class="spec-acc-toggle" id="specAccToggle" aria-expanded="false" aria-controls="specAccPanel">
+            <span>Specs</span>
+            <i class="ti ti-chevron-down spec-acc-chev"></i>
+          </button>
+          <div class="spec-acc-panel" id="specAccPanel" hidden>
+            <table class="specs-table">
+              <tr><td>Material</td><td>Premium PVC, full-colour print both sides</td></tr>
+              <tr><td>Size</td><td>85.6 × 54 mm (standard credit card)</td></tr>
+              <tr><td>Thickness</td><td>0.76mm</td></tr>
+              <tr><td>NFC chip</td><td>NTAG213 · 180 bytes · unlimited taps</td></tr>
+              <tr><td>Works on</td><td>All iPhones (iOS 13+) and Android (5.0+). No app required.</td></tr>
+              <tr><td>QR code</td><td>Engraved on reverse, works with any phone camera</td></tr>
+              <tr><td>Delivery</td><td>3–5 working days standard · Express available</td></tr>
+              <tr><td>Dispatch</td><td>Within 48 hours of artwork approval</td></tr>
+              <tr><td>Guarantee</td><td>Full refund if you're not completely satisfied</td></tr>
+            </table>
+          </div>
+        </div>
+        <script>
+          (function(){
+            var t = document.getElementById('specAccToggle'), p = document.getElementById('specAccPanel');
+            if(!t || !p) return;
+            t.addEventListener('click', function(){
+              var open = t.getAttribute('aria-expanded') === 'true';
+              t.setAttribute('aria-expanded', open ? 'false' : 'true');
+              p.hidden = open;
+            });
+          })();
+        </script>
 
         <a href="https://wa.me/447700000000?text=Hi%2C+I%27d+like+to+order+a+plastic+NFC+card" class="ph-wa-link" style="justify-content:flex-start;padding:0 0 16px;">
           <i class="ti ti-brand-whatsapp" style="color:var(--green);font-size:16px;"></i>
@@ -414,12 +515,12 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
 <section style="background:var(--lbg);padding:68px 48px;" class="sec-pad">
   <div class="mw">
     <p class="ey-lt">Why plastic</p>
-    <h2 class="sec-h sec-h-lt">All the impact. None of the fuss.</h2>
+    <h2 class="sec-h sec-h-lt">The moment they feel it, everything changes.</h2>
     <div class="reaction-grid">
       <div class="reaction-item">
         <div class="reaction-icon"><i class="ti ti-palette" aria-hidden="true"></i></div>
-        <p class="reaction-title">Full-colour, any design</p>
-        <p class="reaction-text">Print right to the edges in vivid colour — logos, photos, gradients, the lot. The card that looks exactly like your brand.</p>
+        <p class="reaction-title">Vivid full colour</p>
+        <p class="reaction-text">Your brand printed edge to edge in sharp, full colour. Light, durable and impossible to ignore in a stack of cards.</p>
       </div>
       <div class="reaction-item">
         <div class="reaction-icon"><i class="ti ti-phone-call" aria-hidden="true"></i></div>
@@ -427,16 +528,46 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <p class="reaction-text">Hold it to any phone. Your profile opens instantly — no app, no friction. Contact saved, LinkedIn connected, job done.</p>
       </div>
       <div class="reaction-item">
-        <div class="reaction-icon"><i class="ti ti-pig-money" aria-hidden="true"></i></div>
-        <p class="reaction-title">Brilliant value</p>
-        <p class="reaction-text">Our most affordable card — and it still does everything. Perfect for teams, events and anyone kitting out a whole crew.</p>
+        <div class="reaction-icon"><i class="ti ti-repeat" aria-hidden="true"></i></div>
+        <p class="reaction-title">It never goes out of date</p>
+        <p class="reaction-text">Changed jobs? New number? New website? Update your profile in seconds — the physical card never changes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER PROCESS -->
+<section style="background:var(--lsf);padding:68px 48px;border-top:0.5px solid var(--lbr);" class="sec-pad">
+  <div class="mw">
+    <p class="ey-lt">How it works</p>
+    <h2 class="sec-h sec-h-lt">From order to doorstep in 4 steps.</h2>
+    <div class="steps-row">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <p class="step-title">Order</p>
+        <p class="step-desc">Place your order and pay securely online.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <p class="step-title">Upload your logo</p>
+        <p class="step-desc">Send us your logo and any design notes.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <p class="step-title">Approve your proof</p>
+        <p class="step-desc">We'll send a design proof within 24 hours.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <p class="step-title">Delivered</p>
+        <p class="step-desc">Your card arrives within 5 working days.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WHAT YOU GET -->
-<section style="background:var(--dbg);padding:68px 48px;border-top:0.5px solid var(--dbr);" class="sec-pad">
+<section id="wyg-section" style="background:var(--dbg);padding:68px 48px;border-top:0.5px solid var(--dbr);" class="sec-pad">
   <div class="mw">
     <p class="ey-dk">Everything included</p>
     <h2 class="sec-h sec-h-dk">What you're getting for £70.</h2>
@@ -445,7 +576,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="wyg-icon"><i class="ti ti-credit-card" aria-hidden="true"></i></div>
         <div>
           <p class="wyg-title">Custom plastic card</p>
-          <p class="wyg-desc">Your artwork printed full-colour on a durable PVC card, credit-card size, with a smooth matte or gloss finish.</p>
+          <p class="wyg-desc">Your logo and branding printed in full colour onto durable PVC. Credit-card size, lightweight and great value.</p>
         </div>
       </div>
       <div class="wyg-item">
@@ -459,7 +590,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <div class="wyg-icon"><i class="ti ti-qrcode" aria-hidden="true"></i></div>
         <div>
           <p class="wyg-title">QR code backup</p>
-          <p class="wyg-desc">Printed on the reverse. Works on any camera. No NFC? No problem — they still get your full profile.</p>
+          <p class="wyg-desc">Engraved on the reverse. Works on any camera. No NFC? No problem — they still get your full profile.</p>
         </div>
       </div>
       <div class="wyg-item">
@@ -487,119 +618,6 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   </div>
 </section>
 
-<!-- SPECS -->
-<section style="background:var(--lsf);padding:68px 48px;border-top:0.5px solid var(--lbr);" class="sec-pad">
-  <div class="mw">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;" class="specs-cols">
-      <div>
-        <p class="ey-lt">Specs</p>
-        <h2 class="sec-h sec-h-lt" style="margin-bottom:28px;">Light in the pocket. Big on colour.</h2>
-        <table class="specs-table">
-          <tr><td>Material</td><td>Durable PVC, matte or gloss finish</td></tr>
-          <tr><td>Size</td><td>85.6 × 54 mm (standard credit card)</td></tr>
-          <tr><td>Thickness</td><td>0.76mm</td></tr>
-          <tr><td>Print</td><td>Full-colour, edge to edge, both sides</td></tr>
-          <tr><td>NFC chip</td><td>NTAG213 · 180 bytes · unlimited taps</td></tr>
-          <tr><td>Works on</td><td>All iPhones (iOS 13+) and Android (5.0+). No app required.</td></tr>
-          <tr><td>QR code</td><td>Printed on reverse, works with any phone camera</td></tr>
-          <tr><td>Delivery</td><td>3–5 working days standard · Express available</td></tr>
-          <tr><td>Dispatch</td><td>Within 48 hours of artwork approval</td></tr>
-          <tr><td>Guarantee</td><td>Full refund if you're not completely satisfied</td></tr>
-        </table>
-      </div>
-      <div>
-        <p class="ey-lt" style="margin-bottom:10px;">Available colours</p>
-        <h2 class="sec-h sec-h-lt" style="font-size:24px;margin-bottom:22px;">7 colours. All fully custom.</h2>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#FFFFFF;border:1px solid var(--lbr);flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">White — £70</p><p style="font-size:12px;color:var(--lbd);margin:0;">Crisp white. Your colours pop. Best seller.</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#1A1A1A;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Black — £70</p><p style="font-size:12px;color:var(--lbd);margin:0;">Matte black. Sleek and understated.</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#2F6FED;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Blue — £70</p><p style="font-size:12px;color:var(--lbd);margin:0;">Bold and confident. A team favourite.</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#fff;border-radius:8px;border:0.5px solid var(--lbr);">
-            <span style="width:12px;height:12px;border-radius:50%;background:#E03B3B;flex-shrink:0;"></span>
-            <div><p style="font-size:13px;font-weight:500;color:var(--lhd);margin:0;">Red — £70</p><p style="font-size:12px;color:var(--lbd);margin:0;">High energy. Impossible to ignore.</p></div>
-          </div>
-          <a href="#finish-gallery" style="font-size:13px;color:var(--dpr);font-weight:500;text-decoration:none;padding:12px 0;display:block;">See all 7 colours ↓</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINISH GALLERY -->
-<section id="finish-gallery" style="background:var(--lbg);padding:68px 48px;border-top:0.5px solid var(--lbr);" class="sec-pad">
-  <div class="mw">
-    <p class="ey-lt">All colours</p>
-    <h2 class="sec-h sec-h-lt">Every one fully customised to your brand.</h2>
-    <div class="fg-grid">
-      <div class="fg-card" onclick="window.scrollTo({top:0,behavior:'smooth'});switchFinish(document.querySelector('.ph-thumb'), 'assets/images/plastic-white-photo.webp', 'White', '£70')">
-        <div class="fg-img"><img src="assets/images/plastic-white-photo.webp" alt="White plastic NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">White</p>
-          <p class="fg-desc">The bestseller. Clean canvas, vivid colour.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £70 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/plastic-black-photo.webp" alt="Black plastic NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Matte black</p>
-          <p class="fg-desc">Sleek and understated, with bright print.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £70 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/plastic-blue-photo.webp" alt="Blue plastic NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Blue</p>
-          <p class="fg-desc">Bold, confident, professional.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £70 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/plastic-red-photo.webp" alt="Red plastic NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Red</p>
-          <p class="fg-desc">High energy. Impossible to ignore.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £70 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/plastic-green-photo.webp" alt="Green plastic NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Green</p>
-          <p class="fg-desc">Fresh and distinctive. Stands out in a stack.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £70 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/plastic-pink-photo.webp" alt="Pink plastic NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Pink</p>
-          <p class="fg-desc">Playful and memorable. A beauty-industry favourite.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £70 →</a>
-        </div>
-      </div>
-      <div class="fg-card">
-        <div class="fg-img"><img src="assets/images/plastic-yellow-photo.webp" alt="Yellow plastic NFC card"></div>
-        <div class="fg-info">
-          <p class="fg-name">Yellow</p>
-          <p class="fg-desc">Bright and cheerful. Hard to lose in a bag.</p>
-          <a href="#" class="fg-link" data-finishorder="1">Order — £70 →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- TESTIMONIALS -->
 <section style="background:var(--lsf);padding:68px 48px;border-top:0.5px solid var(--lbr);" class="sec-pad">
   <div class="mw">
@@ -615,12 +633,12 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           </div>
         </div>
         <div class="t-body">
-          <p class="t-quote">"Kitted out my whole sales team for less than I used to spend on paper cards in a year. Brilliant."</p>
+          <p class="t-quote">"People at chapter ask about it every single week. Four members have ordered since seeing mine."</p>
           <div class="t-person">
-            <div class="t-av">LK</div>
+            <div class="t-av">DM</div>
             <div>
-              <p class="t-name">Laura Kent</p>
-              <p class="t-role">Sales manager · BNI Sheffield</p>
+              <p class="t-name">David Mitchell</p>
+              <p class="t-role">Chartered accountant · BNI Altrincham</p>
             </div>
           </div>
         </div>
@@ -633,12 +651,12 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           </div>
         </div>
         <div class="t-body">
-          <p class="t-quote">"The full-colour print is gorgeous — it matches my branding exactly. People always comment on it."</p>
+          <p class="t-quote">"My clients always mention the card when they book. It's become part of how people recognise my brand."</p>
           <div class="t-person">
-            <div class="t-av">PA</div>
+            <div class="t-av">ET</div>
             <div>
-              <p class="t-name">Priya Anand</p>
-              <p class="t-role">Hair stylist · BNI Birmingham</p>
+              <p class="t-name">Emma Thorpe</p>
+              <p class="t-role">Solicitor · BNI Manchester North</p>
             </div>
           </div>
         </div>
@@ -651,17 +669,18 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           </div>
         </div>
         <div class="t-body">
-          <p class="t-quote">"Perfect for events. We handed out dozens at a trade show and the leads kept coming for weeks."</p>
+          <p class="t-quote">"Worth every penny. I stopped printing paper cards the week it arrived. Never looked back."</p>
           <div class="t-person">
-            <div class="t-av">CG</div>
+            <div class="t-av">RB</div>
             <div>
-              <p class="t-name">Chris Gale</p>
-              <p class="t-role">Events lead · BNI Bristol</p>
+              <p class="t-name">Rob Barnes</p>
+              <p class="t-role">Mortgage broker · BNI Leeds West</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <p class="swipe-hint">← swipe to see more →</p>
   </div>
 </section>
 
@@ -676,29 +695,29 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <a href="https://wa.me/447700000000" class="gbtn">Chat on WhatsApp</a>
       </div>
       <div>
-        <details open>
-          <summary>Is plastic as durable as metal?</summary>
-          <p class="faq-answer">Our plastic cards use durable PVC with a protective finish, so they handle daily life in a wallet or pocket without trouble. Metal feels more premium and lasts longer, but plastic is lighter, full-colour, and the best value — most customers carrying lots of cards or kitting out a team choose plastic.</p>
-        </details>
         <details>
           <summary>Will it work on my clients' iPhones?</summary>
           <p class="faq-answer">Yes, absolutely. All iPhones from iPhone 7 onwards (iOS 13+) read NFC natively — no app needed. They just hold the card to the top of their phone and your profile opens in Safari instantly. Android phones work the same way from Android 5.0+, which covers virtually every phone made since 2015.</p>
         </details>
         <details>
-          <summary>Can I print a full-colour design?</summary>
-          <p class="faq-answer">Yes — that's the big advantage of plastic. We print edge to edge in full colour on both sides, so you can use photos, gradients, your logo and brand colours exactly as you want them. Upload your artwork at checkout, or send us your logo and we'll design a proof for you.</p>
+          <summary>What does the digital profile actually look like?</summary>
+          <p class="faq-answer">Your profile is a clean, branded page with your photo, name, job title, and a set of link buttons — phone, email, website, LinkedIn, WhatsApp, Google review link, booking page, or whatever's most relevant to your business. It opens in the browser so there's nothing to download or install. You can see a live example by tapping the card on our homepage.</p>
         </details>
         <details>
           <summary>Can I update my profile after the card arrives?</summary>
           <p class="faq-answer">Yes, any time. Log into your dashboard and make any changes — your profile updates immediately and your card taps to the new version right away. Changed jobs, got a new number, launched a new website? Just update your profile. No reprinting, no cost.</p>
         </details>
         <details>
+          <summary>What if someone doesn't have NFC or is using an older phone?</summary>
+          <p class="faq-answer">Every card has a QR code engraved on the back. Anyone can open their phone camera, scan the QR, and see your profile — it works on any smartphone, old or new. You're always covered.</p>
+        </details>
+        <details>
           <summary>Is there a monthly fee or subscription?</summary>
           <p class="faq-answer">No subscription, ever. You pay once for the card and that's it. Your profile is hosted, your updates are free, and your analytics are included — all for the one-time price. We don't charge you to exist.</p>
         </details>
         <details>
-          <summary>Do you offer team and bulk discounts?</summary>
-          <p class="faq-answer">Yes. Plastic is our most popular choice for teams because it's such good value, and we offer tiered discounts for bulk orders. Message us on WhatsApp with how many you need and we'll sort a price for you.</p>
+          <summary>How do I send you my logo and design?</summary>
+          <p class="faq-answer">During checkout you'll upload your logo file (PDF, AI, EPS, or high-res PNG all work). If you don't have a design, you can describe what you want and our team will create a proof for you to approve before we engrave anything. Nothing gets made until you're happy with how it looks.</p>
         </details>
       </div>
     </div>
@@ -747,7 +766,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
       <a href="metal.html">Metal</a>
       <a href="wood.html">Wood</a>
       <a href="plastic.html">Plastic</a>
-      <a href="/stands">Stands</a>
+      <a href="stands.html">Stands</a>
       <a href="/privacy">Privacy policy</a>
     </div>
     <p style="font-size:12px;color:rgba(255,255,255,0.2);">exposureboost.com</p>
@@ -767,6 +786,7 @@ const CATALOG = {
   wooden:  { name: "Wooden NFC Card",  price: 70, thumb: "linear-gradient(150deg,#9c6a37,#5e3c1d)" },
   plastic: { name: "Plastic NFC Card", price: 70, thumb: "linear-gradient(155deg,#f7c948,#e0991a)" },
   stand:   { name: "NFC Stand",        price: 25, thumb: "linear-gradient(160deg,#241845,#3a2a66)" },
+  keyring: { name: "NFC Keyring",     price: 15, thumb: "linear-gradient(160deg,#3a2a66,#241845)" },
 };
 const CART_KEY = "eb_cart";
 const $ = id => document.getElementById(id);
@@ -852,7 +872,7 @@ function currentFinish() {
   return el ? el.textContent.trim() : "";
 }
 function addToCart() {
-  const id = document.body.getAttribute('data-product') || 'plastic';
+  const id = document.body.getAttribute('data-product') || 'metal';
   cartAdd(id, currentFinish());
   const btn = $("addBtn");
   if (btn) {
@@ -862,20 +882,6 @@ function addToCart() {
   const vb = $("viewBasket"); if (vb) vb.style.display = 'inline-flex';
   openCart();
 }
-// Per-finish "Order" buttons in the gallery add that specific style to the cart.
-function addFinishToCart(finish) {
-  const id = document.body.getAttribute('data-product') || 'plastic';
-  cartAdd(id, finish || currentFinish());
-  openCart();
-}
-document.querySelectorAll('.fg-link[data-finishorder]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault(); e.stopPropagation();
-    const card = a.closest('.fg-card');
-    const nm = card && card.querySelector('.fg-name');
-    addFinishToCart(nm ? nm.textContent.trim() : "");
-  });
-});
 // "View basket & checkout" opens the drawer instead of leaving the page
 const viewBasketLink = $("viewBasket");
 if (viewBasketLink) viewBasketLink.addEventListener("click", e => { e.preventDefault(); openCart(); });
@@ -899,7 +905,7 @@ function switchFinish(clickedThumb, imgSrc, finishName, price) {
 // ── Sticky buy bar ──
 const stickyBar = document.getElementById('stickyBar');
 const hero = document.getElementById('productHero');
-const navHeight = document.querySelector('nav').offsetHeight;
+const navHeight = document.querySelector('.site-nav').offsetHeight;
 
 const observer = new IntersectionObserver(entries => {
   const heroBottom = entries[0].boundingClientRect.bottom;
