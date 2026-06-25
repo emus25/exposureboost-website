@@ -44,31 +44,31 @@ body { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; line-
 .wa-btn { background: var(--green); color: #fff; font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 5px; }
 .ghost-lt { background: transparent; color: var(--lhd); font-size: 14px; font-weight: 500; padding: 13px 20px; border-radius: 7px; border: 1.5px solid rgba(14,6,32,0.18); display: block; text-align: center; text-decoration: none; }
 
-/* ── NAV (identical on every page — fixed colours, matches index.html) ── */
-.site-nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 15px 48px; background: rgba(8,4,20,0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+/* ── NAV (index layout; colours adapt to each page so it blends in) ── */
+.site-nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 15px 48px; background: var(--dbg); border-bottom: 1px solid var(--dbr); }
 .nav-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo-icon { width: 32px; height: 32px; border: 1.5px solid #f0b429; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nav-logo-icon { width: 32px; height: 32px; border: 1.5px solid var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .nav-logo-text { font-family: var(--fd); font-size: 17px; font-weight: 700; color: #fff; letter-spacing: 0.3px; }
-.nav-logo-text b { color: #f0b429; }
+.nav-logo-text b { color: var(--gold); }
 .nav-menu { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
-.nav-menu a { color: #9b96b3; text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color 0.2s ease; }
+.nav-menu a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color 0.2s ease; }
 .nav-menu a:hover, .nav-menu a.active { color: #fff; }
-.nav-actions { display: flex; align-items: center; gap: 18px; }
-.nav-signin2 { color: #9b96b3; text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap; transition: color 0.2s ease; }
+.nav-actions { display: flex; align-items: center; gap: 16px; }
+.nav-signin2 { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap; transition: color 0.2s ease; }
 .nav-signin2:hover { color: #fff; }
-.nav-cart { position: relative; background: transparent; border: 1.5px solid rgba(140,110,220,0.35); color: #fff; font-family: var(--fd); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
+.nav-cart { position: relative; background: transparent; border: 1px solid var(--dbr); color: #fff; padding: 9px; border-radius: 9px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .nav-cart:hover { border-color: rgba(255,255,255,0.4); }
 .nav-cart svg { display: block; }
-.nav-cart .cart-count { background: #f0b429; }
-.nav-buy { background: linear-gradient(135deg,#f0b429,#d99a1f); color: #1a1206; border: none; font-family: var(--fd); font-weight: 700; font-size: 14.5px; padding: 11px 22px; border-radius: 9px; cursor: pointer; white-space: nowrap; }
+.nav-cart .cart-count { background: var(--gold); }
+.nav-buy { background: var(--gold); color: var(--dbg); border: none; font-family: var(--fd); font-weight: 700; font-size: 14.5px; padding: 11px 22px; border-radius: 9px; cursor: pointer; white-space: nowrap; }
 .nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .nav-burger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
 .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-burger.open span:nth-child(2) { opacity: 0; }
 .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.nav-drop { position: absolute; top: 100%; left: 0; right: 0; background: #0c0720; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; padding: 6px 20px 16px; transform: translateY(-12px); opacity: 0; visibility: hidden; transition: transform 0.22s ease, opacity 0.18s ease, visibility 0.22s; box-shadow: 0 24px 40px -20px rgba(0,0,0,0.7); }
+.nav-drop { position: absolute; top: 100%; left: 0; right: 0; background: var(--dsf); border-bottom: 1px solid var(--dbr); display: flex; flex-direction: column; padding: 6px 20px 16px; transform: translateY(-12px); opacity: 0; visibility: hidden; transition: transform 0.22s ease, opacity 0.18s ease, visibility 0.22s; box-shadow: 0 24px 40px -20px rgba(0,0,0,0.7); }
 .nav-drop.open { transform: translateY(0); opacity: 1; visibility: visible; }
-.nav-drop a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 13px 4px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-drop a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 13px 4px; border-bottom: 1px solid var(--dbr); }
 .nav-drop a:last-child { border-bottom: none; }
 @media (max-width: 900px) {
   .site-nav { padding: 14px 20px; }
@@ -374,7 +374,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   </ul>
   <div class="nav-actions">
     <a class="nav-signin2" href="https://app.exposureboost.co.uk" target="_blank" rel="noopener">Sign in</a>
-    <button class="nav-cart" id="openCart" aria-label="Open cart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.5 12h11L21 7H6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="#fff"/><circle cx="18" cy="20" r="1.4" fill="#fff"/></svg>Cart<span class="cart-count" id="cartCount">0</span></button>
+    <button class="nav-cart" id="openCart" aria-label="Open cart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.5 12h11L21 7H6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4" fill="#fff"/><circle cx="18" cy="20" r="1.4" fill="#fff"/></svg><span class="cart-count" id="cartCount">0</span></button>
     <button class="nav-buy" id="navBuy">Buy now</button>
     <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -428,6 +428,8 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-walnut-photo.webp', 'Walnut', '£70')"><img src="assets/images/wood-walnut-photo.webp" alt="Walnut"></div>
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-maple-photo.webp', 'Maple', '£70')"><img src="assets/images/wood-maple-photo.webp" alt="Maple"></div>
           <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-cherry-photo.webp', 'Cherry', '£70')"><img src="assets/images/wood-cherry-photo.webp" alt="Cherry"></div>
+          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-sapele-photo.webp', 'Sapele', '£70')"><img src="assets/images/wood-sapele-photo.webp" alt="Sapele"></div>
+          <div class="ph-thumb" onclick="switchFinish(this, 'assets/images/wood-blackbamboo-photo.webp', 'Black bamboo', '£70')"><img src="assets/images/wood-blackbamboo-photo.webp" alt="Black bamboo"></div>
         </div>
 
         <!-- Compact buy row -->
