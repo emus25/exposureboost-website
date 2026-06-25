@@ -344,7 +344,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
     <img src="standimages/whitestand.webp" alt="NFC stand" id="stickyBarImg">
     <div>
       <p style="font-size:13px;font-weight:500;color:#fff;margin:0;white-space:nowrap;" id="stickyBarName">ExposureBoost NFC Stand</p>
-      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;white-space:nowrap;">Free UK delivery · 48hr dispatch</p>
+      <p style="font-size:12px;color:rgba(255,255,255,0.45);margin:0;white-space:nowrap;">Free UK delivery</p>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:14px;">
@@ -417,13 +417,13 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
       <!-- LEFT: Image viewer + colour selector + add to cart -->
       <div class="ph-viewer">
         <div class="ph-main">
-          <img src="standimages/whitestand.webp" alt="ExposureBoost NFC stand — White" id="mainCardImg">
+          <img src="standimages/whitestand.webp" alt="ExposureBoost NFC stand — White" id="mainCardImg" style="transform:scale(1.3);transition:transform .2s ease, opacity .2s ease;">
         </div>
 
         <p class="ph-colour-sel">Base colour: <span id="selectedFinish">White</span></p>
         <div class="finish-chips" id="finishChips">
-          <div class="finish-chip active" data-finish="White" data-img="standimages/whitestand.webp"><span class="finish-dot" style="background:#ffffff;border:1px solid rgba(255,255,255,0.4);"></span>White</div>
-          <div class="finish-chip" data-finish="Black" data-img="standimages/blackstand.webp"><span class="finish-dot" style="background:#1a1a1a;"></span>Black</div>
+          <div class="finish-chip active" data-finish="White" data-img="standimages/whitestand.webp" data-scale="1.3"><span class="finish-dot" style="background:#ffffff;border:1px solid rgba(255,255,255,0.4);"></span>White</div>
+          <div class="finish-chip" data-finish="Black" data-img="standimages/blackstand.webp" data-scale="1"><span class="finish-dot" style="background:#1a1a1a;"></span>Black</div>
         </div>
         <p style="font-size:12.5px;color:rgba(255,255,255,0.45);margin:-12px 0 20px;">Any colour can be printed on the face.</p>
         <script>
@@ -435,6 +435,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
               var sel = document.getElementById('selectedFinish'); if (sel) sel.textContent = c.getAttribute('data-finish');
               var img = c.getAttribute('data-img'), main = document.getElementById('mainCardImg');
               if (img && main) main.src = img;
+              if (main) main.style.transform = 'scale(' + (c.getAttribute('data-scale') || '1') + ')';
               var simg = document.getElementById('stickyBarImg'); if (img && simg) simg.src = img;
             }); });
           })();
@@ -484,8 +485,6 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
               <tr><td>Works on</td><td>All iPhones (iOS 13+) and Android (5.0+). No app required.</td></tr>
               <tr><td>QR code</td><td>Engraved on reverse, works with any phone camera</td></tr>
               <tr><td>Delivery</td><td>3–5 working days standard · Express available</td></tr>
-              <tr><td>Dispatch</td><td>Within 48 hours of artwork approval</td></tr>
-              <tr><td>Guarantee</td><td>Full refund if you're not completely satisfied</td></tr>
             </table>
           </div>
         </div>
@@ -509,8 +508,6 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
         <!-- Trust badges -->
         <div class="ph-trust">
           <div class="ph-badge"><i class="ti ti-truck"></i>Free UK delivery</div>
-          <div class="ph-badge"><i class="ti ti-bolt"></i>48hr dispatch</div>
-          <div class="ph-badge"><i class="ti ti-shield-check"></i>Money-back guarantee</div>
           <div class="ph-badge"><i class="ti ti-refresh"></i>Free updates forever</div>
         </div>
       </div>
@@ -737,7 +734,7 @@ footer { background: #07041A; border-top: 0.5px solid var(--dbr); padding: 26px 
   <div class="mw" style="text-align:center;">
     <p class="ey-dk" style="color:rgba(255,255,255,0.55);margin-bottom:12px;">Ready to make your mark?</p>
     <h2 class="fd" style="font-size:34px;font-weight:700;margin-bottom:12px;">Order today. In their hand within the week.</h2>
-    <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £99 · Free UK delivery · 48hr dispatch · Money-back guarantee</p>
+    <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:30px;">From £99 · Free UK delivery</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
       <a href="#" class="gbtn gbtn-lg" onclick="addToCart();return false;">Order your stand</a>
       <a href="https://wa.me/447754888841" style="background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:15px;font-weight:500;padding:15px 24px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;">
